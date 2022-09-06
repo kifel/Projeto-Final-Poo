@@ -9,7 +9,7 @@ public class App {
         Conta minhaConta2 = new Conta(1234, "Teste", 0);
         
         if(minhaConta1.sacar(100) == false) {
-            System.out.println("Saldo insuficiente");
+            System.out.println("inválido");
         }else {
             System.out.println("Sacado com sucesso");
         }
@@ -29,6 +29,6 @@ public class App {
         System.out.println("Titular da conta:" + minhaConta2.getTitular() + "\nSaldo da conta:" + minhaConta2.getSaldo()
                 + "\nNumero da conta:" + minhaConta2.getNumero());
         System.out.println("\n");
-
+        
     }
 }
