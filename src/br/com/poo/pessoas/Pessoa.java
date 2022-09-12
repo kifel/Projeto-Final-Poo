@@ -91,7 +91,6 @@ public abstract class Pessoa {
 		this.idEndereco = idEndereco;
 	}
 
-	@Override
 	public String toString() {
 		return "Pessoa [nome=" + nome + ", genero=" + genero + ", estadoCivil="
 				+ estadoCivil + ", cpf=" + cpf + ", telefone=" + telefone + ", email=" + email + ", dataNascimento="
