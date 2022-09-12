@@ -1,6 +1,6 @@
 package br.com.poo.pessoas;
 
-public abstract class Pessoa {
+public abstract class Pessoas {
 
 	private String nome;
 	private String genero;
@@ -11,11 +11,11 @@ public abstract class Pessoa {
 	private String dataNascimento;
 	private Integer idEndereco;
 
-	public Pessoa() {
+	public Pessoas() {
 		super();
 	}
 
-	public Pessoa(String nome, String genero, String estadoCivil, String cpf, String telefone, String email,
+	public Pessoas(String nome, String genero, String estadoCivil, String cpf, String telefone, String email,
 			String dataNascimento, Integer idEndereco) {
 		this.nome = nome;
 		this.genero = genero;
