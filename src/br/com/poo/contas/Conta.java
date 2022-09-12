@@ -9,7 +9,7 @@ public class Conta {
         this.numero = numero;
         this.titular = titular;
         this.saldo = saldo;
-    }
+    } 
 
     public int getNumero() {
         return numero;
