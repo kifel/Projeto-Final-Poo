@@ -1,4 +1,4 @@
-package br.com.poo.principal;
+package br.com.poo.sistemainterno;
 
 import br.com.poo.contas.Conta;
 
