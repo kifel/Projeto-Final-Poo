@@ -1,6 +1,6 @@
 package br.com.poo.pessoas;
 
-public abstract class Pessoas {
+public abstract class Pessoa {
 
 	private String nome;
 	private String genero;
@@ -11,11 +11,11 @@ public abstract class Pessoas {
 	private String dataNascimento;
 	private Integer idEndereco;
 
-	public Pessoas() {
+	public Pessoa() {
 		super();
 	}
 
-	public Pessoas(String nome, String genero, String estadoCivil, String cpf, String telefone, String email,
+	public Pessoa(String nome, String genero, String estadoCivil, String cpf, String telefone, String email,
 			String dataNascimento, Integer idEndereco) {
 		this.nome = nome;
 		this.genero = genero;
@@ -95,6 +95,6 @@ public abstract class Pessoas {
 	public String toString() {
 		return "Pessoa [nome=" + nome + ", genero=" + genero + ", estadoCivil="
 				+ estadoCivil + ", cpf=" + cpf + ", telefone=" + telefone + ", email=" + email + ", dataNascimento="
-				+ dataNascimento + ", idEndereco=" + idEndereco + "]";
+				+ dataNascimento + "]";
 	}
 }
