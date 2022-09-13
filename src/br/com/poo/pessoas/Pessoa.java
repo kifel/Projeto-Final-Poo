@@ -81,8 +81,8 @@ public abstract class Pessoa {
 		this.dataNascimento = dataNascimento;
 	}
 
-
 	public String toString() {
+
 		return "Pessoa [nome=" + nome + ", genero=" + genero + ", estadoCivil="
 				+ estadoCivil + ", cpf=" + cpf + ", telefone=" + telefone + ", email=" + email + ", dataNascimento="
 				+ dataNascimento + "]";

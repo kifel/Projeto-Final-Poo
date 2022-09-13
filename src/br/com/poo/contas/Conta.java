@@ -1,63 +1,85 @@
 package br.com.poo.contas;
 
-public class Conta {
-    private int numero;
-    private String titular;
-    private double saldo;
+public abstract class Conta {
 
-    public Conta(int numero, String titular, double saldo) {
-        this.numero = numero;
-        this.titular = titular;
+    private String senhaConta;
+    private String numeroAgencia;
+    private String numeroConta;
+    protected Double saldo;
+    private String dataAbertura;
+    private Boolean status;
+    private String cpf;
+
+    public Conta() {
+
+    }
+
+    public Conta(String senhaConta, String numeroAgencia, String numeroConta, Double saldo, String dataAbertura,
+            Boolean status, String cpf) {
+        super();
+        this.senhaConta = senhaConta;
+        this.numeroAgencia = numeroAgencia;
+        this.numeroConta = numeroConta;
         this.saldo = saldo;
-    } 
-
-    public int getNumero() {
-        return numero;
+        this.dataAbertura = dataAbertura;
+        this.status = status;
+        this.cpf = cpf;
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public String getSenha() {
+        return senhaConta;
     }
 
-    public String getTitular() {
-        return titular;
+    public void setSenha(String senhaConta) {
+        this.senhaConta = senhaConta;
     }
 
-    public void setTitular(String titular) {
-        this.titular = titular;
+    public String getNumeroAgencia() {
+        return numeroAgencia;
     }
 
-    public double getSaldo() {
+    public String getNumeroConta() {
+        return numeroConta;
+    }
+
+    public Double getSaldo() {
         return saldo;
     }
 
-    public boolean sacar(double valor) {
-        if (this.saldo < valor) {
-            return false;
-        } else {
-            this.saldo -= valor;
-            return true;
-        }
-    }
-    
-    public boolean depositar(double valor) {
-        if (valor < 0) {
-            return false;
-        } else {
-            this.saldo += valor;
-            return true;
-        }
+    public void setSaldo(Double saldo) {
+        this.saldo = saldo;
     }
 
-    public boolean transferir(double valor, Conta nomeConta) {
-        boolean transfere = sacar(valor);
-        if (transfere == false) {
-            System.out.println("Saldo insuficiente");
-            return false;
-        } else {
-            nomeConta.depositar(valor);
-            System.out.println("Transferido com sucesso");
-            return true;
-        }
+    public String getDataAbertura() {
+        return dataAbertura;
     }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public Double saldo(double saldo) {
+        return this.getSaldo();
+    }
+
+    @Override
+    public String toString() {
+        return "\nnumeroAgencia="
+                + numeroAgencia + "\n numeroConta=" + numeroConta + "\nsaldo=" + getSaldo() + "\ndataAbertura="
+                + dataAbertura
+                + "\nstatus=" + status + "]";
+    }
+
 }
