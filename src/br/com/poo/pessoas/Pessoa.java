@@ -9,14 +9,13 @@ public abstract class Pessoa {
 	private String telefone;
 	private String email;
 	private String dataNascimento;
-	private Integer idEndereco;
 
 	public Pessoa() {
 		super();
 	}
 
 	public Pessoa(String nome, String genero, String estadoCivil, String cpf, String telefone, String email,
-			String dataNascimento, Integer idEndereco) {
+			String dataNascimento) {
 		this.nome = nome;
 		this.genero = genero;
 		this.estadoCivil = estadoCivil;
@@ -24,7 +23,6 @@ public abstract class Pessoa {
 		this.telefone = telefone;
 		this.email = email;
 		this.dataNascimento = dataNascimento;
-		this.idEndereco = idEndereco;
 	}
 
 	public String getNome() {
@@ -83,15 +81,8 @@ public abstract class Pessoa {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public Integer getIdEndereco() {
-		return idEndereco;
-	}
+	public String toString() {
 
-	public void setIdEndereco(Integer idEndereco) {
-		this.idEndereco = idEndereco;
-	}
-  
-  public String toString() {
 		return "Pessoa [nome=" + nome + ", genero=" + genero + ", estadoCivil="
 				+ estadoCivil + ", cpf=" + cpf + ", telefone=" + telefone + ", email=" + email + ", dataNascimento="
 				+ dataNascimento + "]";
