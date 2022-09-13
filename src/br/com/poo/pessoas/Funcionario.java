@@ -1,5 +1,5 @@
 package br.com.poo.pessoas;
 
-public class Funcionario {
+public class Funcionario extends Pessoa {
     
 }
