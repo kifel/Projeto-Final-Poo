@@ -73,7 +73,6 @@ public class ContaCorrente extends Conta {
         this.numeroTotalTributado = numeroTotalTributado;
     }
 
-    @Override
     public String toString() {
 
         return "ContaCorrente \nchequeEspecial: " + chequeEspecial + "taxa: " + taxa +
