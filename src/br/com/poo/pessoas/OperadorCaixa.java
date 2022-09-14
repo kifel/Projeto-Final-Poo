@@ -1,8 +1,11 @@
 package br.com.poo.pessoas;
 
 public class OperadorCaixa extends Funcionario {
+<<<<<<< HEAD
 
 	String senha;
+=======
+>>>>>>> 19d62ee (Finalizado todos os construtores das classes de Pessoas)
 	//Atributos herdados
 	
 	
@@ -19,6 +22,9 @@ public class OperadorCaixa extends Funcionario {
 	
 	
 	
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 19d62ee (Finalizado todos os construtores das classes de Pessoas)
 }
