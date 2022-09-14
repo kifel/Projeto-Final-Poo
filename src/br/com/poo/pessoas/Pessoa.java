@@ -24,6 +24,7 @@ public abstract class Pessoa {
 		this.email = email;
 		this.dataNascimento = dataNascimento;
 	}
+	
 
 	public String getNome() {
 		return nome;
