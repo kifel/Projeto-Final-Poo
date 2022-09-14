@@ -1,21 +1,20 @@
 package br.com.poo.contas;
 
-import java.time.LocalDate;
-
 public class ContaCorrente extends Conta {
 
-    protected double taxas;
-    
-    public ContaCorrente() {
-        
-    }
-    public ContaCorrente(String titular, String numeroAgencia, String numeroConta, int tipoConta, Double saldo,
-            LocalDate dataAbertura, String cpf, double taxas) {
-        super(titular, numeroAgencia, numeroConta, tipoConta, saldo, dataAbertura, cpf);
-        this.taxas = taxas;
-    }
+	protected double taxas;
 
-    @Override
+	public ContaCorrente() {
+
+	}
+
+	public ContaCorrente(String titular, String numeroAgencia, String numeroConta, int tipoConta, Double saldo,
+			String dataAbertura, String cpf, double taxas) {
+		super(titular, numeroAgencia, numeroConta, tipoConta, saldo, dataAbertura, cpf);
+		this.taxas = taxas;
+	}
+
+	@Override
 	public boolean sacar(double valor) {
 		if (this.saldo < (valor + 0.10)) {
 			System.out.println("Saldo insuficiente!!!");
@@ -31,13 +30,13 @@ public class ContaCorrente extends Conta {
 
 	@Override
 	public boolean depositar(double valor) {
-        if (valor < 0) {
-            return false;
-        } else {
-            this.saldo += (valor - 0.10);
+		if (valor < 0) {
+			return false;
+		} else {
+			this.saldo += (valor - 0.10);
 			this.taxas = this.taxas + 0.10;
-            return true;
-        }
+			return true;
+		}
 	}
 
 	@Override

@@ -1,6 +1,5 @@
 package br.com.poo.contas;
 
-import java.time.LocalDate;
 import java.util.Scanner;
 
 public class ContaPoupanca extends Conta {
@@ -12,7 +11,7 @@ public class ContaPoupanca extends Conta {
     }
 
     public ContaPoupanca(String titular, String numeroAgencia, String numeroConta, int tipoConta, Double saldo,
-            LocalDate dataAbertura, String cpf) {
+            String dataAbertura, String cpf) {
         super(titular, numeroAgencia, numeroConta, tipoConta, saldo, dataAbertura, cpf);
     }
 
