@@ -1,10 +1,10 @@
 package br.com.poo.contas;
 
 import java.time.LocalDate;
-import java.util.Scanner;
 
 public abstract class Conta {
 
+    private String titular;
     private String numeroAgencia;
     private String numeroConta;
     protected int tipoConta;
@@ -12,19 +12,27 @@ public abstract class Conta {
     private LocalDate dataAbertura;
     private String cpf;
 
-
     public Conta() {
-        
+
     }
-    
-    public Conta(String numeroAgencia, String numeroConta, int tipoConta, Double saldo, LocalDate dataAbertura,
-            String cpf) {
+
+    public Conta(String titular, String numeroAgencia, String numeroConta, int tipoConta, Double saldo,
+            LocalDate dataAbertura, String cpf) {
+        this.titular = titular;
         this.numeroAgencia = numeroAgencia;
         this.numeroConta = numeroConta;
         this.tipoConta = tipoConta;
         this.saldo = saldo;
         this.dataAbertura = dataAbertura;
         this.cpf = cpf;
+    }
+
+    public String getTitular() {
+        return titular;
+    }
+
+    public void setTitular(String titular) {
+        this.titular = titular;
     }
 
     public String getNumeroAgencia() {
@@ -55,10 +63,6 @@ public abstract class Conta {
         return saldo;
     }
 
-    public void setSaldo(Double saldo) {
-        this.saldo = saldo;
-    }
-
     public LocalDate getDataAbertura() {
         return dataAbertura;
     }
@@ -74,7 +78,7 @@ public abstract class Conta {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-    
+
     public boolean sacar(double valor) {
         if (this.saldo < valor) {
             return false;
@@ -83,7 +87,7 @@ public abstract class Conta {
             return true;
         }
     }
-    
+
     public boolean depositar(double valor) {
         if (valor < 0) {
             return false;
@@ -104,5 +108,13 @@ public abstract class Conta {
             return true;
         }
     }
-    
+
+    @Override
+    public String toString() {
+        return "Conta [titular=" + titular + ", numero=" + numeroConta + ", agencia=" + numeroAgencia + ", tipo="
+                + tipoConta
+                + ", cpfTitular=" + cpf + ", saldo=" + saldo + "]";
+
+    }
+
 }
