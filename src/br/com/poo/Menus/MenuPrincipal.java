@@ -4,8 +4,6 @@ import java.util.Scanner;
 import br.com.poo.sistemainterno.App;
 import br.com.poo.contas.ContaCorrente;
 import br.com.poo.contas.ContaPoupanca;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class MenuPrincipal {
 
@@ -56,7 +54,7 @@ public class MenuPrincipal {
 
         switch (choice) {
             case "1":
-                data = data();
+                data = app.data();
                 tipoConta = Integer.parseInt(choice);
                 System.out.print("Digite o nome do titular da conta: ");
                 String titular = myObj.nextLine();
@@ -74,7 +72,7 @@ public class MenuPrincipal {
                 menuInicio();
                 break;
             case "2":
-                data = data();
+                data = app.data();
                 tipoConta = Integer.parseInt(choice);
                 System.out.print("Digite o nome do titular da conta: ");
                 String titularcp = myObj.nextLine();
@@ -95,13 +93,6 @@ public class MenuPrincipal {
                 System.out.println("Opção invalida, tente novamente");
                 menuCadastro();
         }
-    }
-
-    public String data() {
-        LocalDateTime data = LocalDateTime.now();
-        DateTimeFormatter formatada = DateTimeFormatter.ofPattern("dd/MM/yyyy 'as' hh:mm:ss a");
-        String dataFormatada = data.format(formatada);
-        return dataFormatada;
     }
 
 }
