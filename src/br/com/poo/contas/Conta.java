@@ -1,6 +1,7 @@
 package br.com.poo.contas;
 
 import java.time.LocalDate;
+import java.util.Scanner;
 
 public abstract class Conta {
 
@@ -11,36 +12,43 @@ public abstract class Conta {
     private LocalDate dataAbertura;
     private String cpf;
 
+
     public Conta() {
-
+        
     }
-
-    public Conta(String senhaConta, String numeroAgencia, String numeroConta, Double saldo, String dataAbertura,
-            Boolean status, String cpf) {
-        super();
-        this.senhaConta = senhaConta;
+    
+    public Conta(String numeroAgencia, String numeroConta, int tipoConta, Double saldo, LocalDate dataAbertura,
+            String cpf) {
         this.numeroAgencia = numeroAgencia;
         this.numeroConta = numeroConta;
+        this.tipoConta = tipoConta;
         this.saldo = saldo;
         this.dataAbertura = dataAbertura;
-        this.status = status;
         this.cpf = cpf;
-    }
-
-    public String getSenha() {
-        return senhaConta;
-    }
-
-    public void setSenha(String senhaConta) {
-        this.senhaConta = senhaConta;
     }
 
     public String getNumeroAgencia() {
         return numeroAgencia;
     }
 
+    public void setNumeroAgencia(String numeroAgencia) {
+        this.numeroAgencia = numeroAgencia;
+    }
+
     public String getNumeroConta() {
         return numeroConta;
+    }
+
+    public void setNumeroConta(String numeroConta) {
+        this.numeroConta = numeroConta;
+    }
+
+    public int getTipoConta() {
+        return tipoConta;
+    }
+
+    public void setTipoConta(int tipoConta) {
+        this.tipoConta = tipoConta;
     }
 
     public Double getSaldo() {
@@ -51,16 +59,12 @@ public abstract class Conta {
         this.saldo = saldo;
     }
 
-    public String getDataAbertura() {
+    public LocalDate getDataAbertura() {
         return dataAbertura;
     }
 
-    public Boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(Boolean status) {
-        this.status = status;
+    public void setDataAbertura(LocalDate dataAbertura) {
+        this.dataAbertura = dataAbertura;
     }
 
     public String getCpf() {
@@ -70,17 +74,35 @@ public abstract class Conta {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-
-    public Double saldo(double saldo) {
-        return this.getSaldo();
+    
+    public boolean sacar(double valor) {
+        if (this.saldo < valor) {
+            return false;
+        } else {
+            this.saldo -= valor;
+            return true;
+        }
+    }
+    
+    public boolean depositar(double valor) {
+        if (valor < 0) {
+            return false;
+        } else {
+            this.saldo += valor;
+            return true;
+        }
     }
 
-    @Override
-    public String toString() {
-        return "\nnumeroAgencia="
-                + numeroAgencia + "\n numeroConta=" + numeroConta + "\nsaldo=" + getSaldo() + "\ndataAbertura="
-                + dataAbertura
-                + "\nstatus=" + status + "]";
+    public boolean transferir(double valor, Conta nomeConta) {
+        boolean transfere = sacar(valor);
+        if (transfere == false) {
+            System.out.println("Saldo insuficiente");
+            return false;
+        } else {
+            nomeConta.depositar(valor);
+            System.out.println("Transferido com sucesso");
+            return true;
+        }
     }
-
+    
 }
