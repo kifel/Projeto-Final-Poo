@@ -14,8 +14,8 @@ public abstract class Pessoa {
 		super();
 	}
 
-	public Pessoa(String nome, String genero, String estadoCivil, String cpf, String telefone, String email,
-			String dataNascimento) {
+	public Pessoa(String nome, String genero, String estadoCivil, String cpf, String telefone,
+			String email, String dataNascimento) {
 		this.nome = nome;
 		this.genero = genero;
 		this.estadoCivil = estadoCivil;
@@ -81,8 +81,7 @@ public abstract class Pessoa {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public String toString() {
-
+	public String listagem() {
 		return "Pessoa [nome=" + nome + ", genero=" + genero + ", estadoCivil="
 				+ estadoCivil + ", cpf=" + cpf + ", telefone=" + telefone + ", email=" + email + ", dataNascimento="
 				+ dataNascimento + "]";
