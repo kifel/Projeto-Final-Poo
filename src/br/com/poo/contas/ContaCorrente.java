@@ -1,6 +1,8 @@
 package br.com.poo.contas;
 
-public class ContaCorrente extends Conta {
+import br.com.poo.tributos.Tributo;
+
+public class ContaCorrente extends Conta implements Tributo{
 
 	protected double taxas;
 
@@ -9,9 +11,26 @@ public class ContaCorrente extends Conta {
 	}
 
 	public ContaCorrente(String titular, String numeroAgencia, String numeroConta, int tipoConta, Double saldo,
-			String dataAbertura, String cpf, double taxas) {
+			String dataAbertura, String cpf) {
 		super(titular, numeroAgencia, numeroConta, tipoConta, saldo, dataAbertura, cpf);
-		this.taxas = taxas;
+	}
+
+	@Override
+	public double tributarSaque(double valor) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double tributarDeposito(double valor) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double tributarTransferencia(double valor) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
@@ -58,4 +77,6 @@ public class ContaCorrente extends Conta {
 		return this.taxas;
 
 	}
+
+
 }

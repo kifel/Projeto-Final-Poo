@@ -2,7 +2,7 @@ package br.com.poo.contas;
 
 import java.util.Scanner;
 
-public class ContaPoupanca extends Conta {
+public class ContaPoupanca extends Conta{
 
     protected final double TAXARENDIMENTO = 0.01575;
 
@@ -14,7 +14,40 @@ public class ContaPoupanca extends Conta {
             String dataAbertura, String cpf) {
         super(titular, numeroAgencia, numeroConta, tipoConta, saldo, dataAbertura, cpf);
     }
-
+    
+    @Override
+    public boolean sacar(double valor) {
+        if (this.saldo < valor) {
+            return false;
+        } else {
+            this.saldo -= valor;
+            return true;
+        }
+    }
+    
+    @Override
+    public boolean depositar(double valor) {
+        if (valor < 0) {
+            return false;
+        } else {
+            this.saldo += valor;
+            return true;
+        }
+    }
+    
+    @Override
+    public boolean transferir(double valor, Conta nomeConta) {
+        boolean transfere = sacar(valor);
+        if (transfere == false) {
+            System.out.println("Saldo insuficiente");
+            return false;
+        } else {
+            nomeConta.depositar(valor);
+            System.out.println("Transferido com sucesso");
+            return true;
+        }
+    }
+    
     public void rendimentoPoupanca() {
         double rendimentoPoupanca;
         Scanner myObj = new Scanner(System.in);

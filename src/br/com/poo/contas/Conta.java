@@ -77,35 +77,11 @@ public abstract class Conta {
         this.cpf = cpf;
     }
 
-    public boolean sacar(double valor) {
-        if (this.saldo < valor) {
-            return false;
-        } else {
-            this.saldo -= valor;
-            return true;
-        }
-    }
+    public abstract boolean sacar(double valor);
 
-    public boolean depositar(double valor) {
-        if (valor < 0) {
-            return false;
-        } else {
-            this.saldo += valor;
-            return true;
-        }
-    }
+    public abstract boolean depositar(double valor);
 
-    public boolean transferir(double valor, Conta nomeConta) {
-        boolean transfere = sacar(valor);
-        if (transfere == false) {
-            System.out.println("Saldo insuficiente");
-            return false;
-        } else {
-            nomeConta.depositar(valor);
-            System.out.println("Transferido com sucesso");
-            return true;
-        }
-    }
+    public abstract boolean transferir(double valor, Conta nomeConta);
 
     @Override
     public String toString() {
