@@ -64,8 +64,7 @@ public class MenuPrincipal {
                 String numeroConta = myObj.nextLine();
                 System.out.println("\nDigite o cpf: ");
                 String cpf = myObj.nextLine();
-                ContaCorrente cs = new ContaCorrente(titular, numeroAgencia, numeroConta, tipoConta, 0.0, data, cpf,
-                        0.0);
+                ContaCorrente cs = new ContaCorrente(titular, numeroAgencia, numeroConta, tipoConta, 0.0, data, cpf);
                 app.limparTela();
                 System.out.println("Conta Criada com o saldo de " + cs.getSaldo());
                 System.out.println("Data de criação de conta " + cs.getDataAbertura());

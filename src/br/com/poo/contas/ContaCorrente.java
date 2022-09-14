@@ -9,9 +9,8 @@ public class ContaCorrente extends Conta {
 	}
 
 	public ContaCorrente(String titular, String numeroAgencia, String numeroConta, int tipoConta, Double saldo,
-			String dataAbertura, String cpf, double taxas) {
+			String dataAbertura, String cpf) {
 		super(titular, numeroAgencia, numeroConta, tipoConta, saldo, dataAbertura, cpf);
-		this.taxas = taxas;
 	}
 
 	@Override
