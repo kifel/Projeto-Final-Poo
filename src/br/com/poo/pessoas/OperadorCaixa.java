@@ -1,5 +1,5 @@
 package br.com.poo.pessoas;
 
-public class OperadorCaixa extends Pessoa {
-	
+public class OperadorCaixa extends Funcionario {
+	String senha;
 }
