@@ -2,9 +2,7 @@ package br.com.poo.contas;
 
 import java.util.Scanner;
 
-import br.com.poo.tributos.Tributo;
-
-public class ContaPoupanca extends Conta implements Tributo{
+public class ContaPoupanca extends Conta{
 
     protected final double TAXARENDIMENTO = 0.01575;
 
