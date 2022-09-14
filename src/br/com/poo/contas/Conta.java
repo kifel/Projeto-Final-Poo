@@ -1,13 +1,14 @@
 package br.com.poo.contas;
 
+import java.time.LocalDate;
+
 public abstract class Conta {
 
-    private String senhaConta;
     private String numeroAgencia;
     private String numeroConta;
+    protected int tipoConta;
     protected Double saldo;
-    private String dataAbertura;
-    private Boolean status;
+    private LocalDate dataAbertura;
     private String cpf;
 
     public Conta() {
