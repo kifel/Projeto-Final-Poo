@@ -36,10 +36,11 @@ public class LeituraArquivo {
 
 
     BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASIC + path + EXTENSION, true));
-    String linha = "";
+    
 
-    linha = sc.next();
-    buffWrite.append(linha + "\n");
+    String linha = sc.next();
+    buffWrite.append(linha);
+    buffWrite.newLine();
     buffWrite.close();
     sc.close();
 
