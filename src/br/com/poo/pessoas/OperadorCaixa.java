@@ -1,6 +1,8 @@
 package br.com.poo.pessoas;
 
 public class OperadorCaixa extends Funcionario {
+
+	String senha;
 	//Atributos herdados
 	
 	
@@ -17,4 +19,6 @@ public class OperadorCaixa extends Funcionario {
 	
 	
 	
+
+
 }

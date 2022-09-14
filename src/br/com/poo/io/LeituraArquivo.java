@@ -12,6 +12,7 @@ public class LeituraArquivo {
   static final String EXTENSION = ".txt";
 
   public static void leitor(String path) throws IOException {
+    try {
     BufferedReader buffRead = new BufferedReader(new FileReader(PATH_BASIC + path + EXTENSION));
     String linha = "";
 
@@ -26,6 +27,9 @@ public class LeituraArquivo {
     }
 
     buffRead.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
 
@@ -34,15 +38,20 @@ public class LeituraArquivo {
     System.out.println("Escreva o nome do arquivo do relatório: ");
     String path = sc.next();
 
-
+try {
     BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASIC + path + EXTENSION, true));
-    String linha = "";
+    
 
-    linha = sc.next();
-    buffWrite.append(linha + "\n");
+    String linha = sc.next();
+    buffWrite.append(linha);
+    buffWrite.newLine();
     buffWrite.close();
     sc.close();
-
+} catch (IOException e) {
+  e.printStackTrace();
+} catch(Exception e) {
+  e.printStackTrace();
+}
     
   }
 }

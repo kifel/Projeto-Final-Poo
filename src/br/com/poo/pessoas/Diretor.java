@@ -2,7 +2,7 @@ package br.com.poo.pessoas;
 
 public class Diretor extends Funcionario {
 	//Atributos herdados
-	
+	String senha;
 	
 	public Diretor() {
 		super();
@@ -13,7 +13,4 @@ public class Diretor extends Funcionario {
 		super(tipoPessoa, salario, senha, nome, genero, estadoCivil, cpf, telefone, email, dataNascimento);
 		
 	}
-	
-	
-	
 }

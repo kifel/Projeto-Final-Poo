@@ -1,83 +1,62 @@
 package br.com.poo.contas;
 
+import java.time.LocalDate;
+
 public class ContaCorrente extends Conta {
 
-    private Double chequeEspecial;
-    private Double taxa;
-
-    private Integer numeroTotalSaques = 0, numeroTotalDepositos = 0, numeroTotalTransferencias = 0;
-    private Double numeroTotalTributado = 0.0;
-
+    protected double taxas;
+    
     public ContaCorrente() {
-
+        
+    }
+    public ContaCorrente(String titular, String numeroAgencia, String numeroConta, int tipoConta, Double saldo,
+            LocalDate dataAbertura, String cpf, double taxas) {
+        super(titular, numeroAgencia, numeroConta, tipoConta, saldo, dataAbertura, cpf);
+        this.taxas = taxas;
     }
 
-    public ContaCorrente(String senhaConta, String numeroAgencia, String numeroConta, Double saldo, String dataAbertura,
-            Boolean status, String cpf, Double chequeEspecial, Double taxa, Integer numeroTotalSaques,
-            Integer numeroTotalDepositos,
-            Integer numeroTotalTransferencias, Double numeroTotalTributado) {
-        super(senhaConta, numeroAgencia, numeroConta, saldo, dataAbertura, status, cpf);
-        this.chequeEspecial = chequeEspecial;
-        this.taxa = taxa;
-        this.numeroTotalSaques = numeroTotalSaques;
-        this.numeroTotalDepositos = numeroTotalDepositos;
-        this.numeroTotalTransferencias = numeroTotalTransferencias;
-        this.numeroTotalTributado = numeroTotalTributado;
-    }
+    @Override
+	public boolean sacar(double valor) {
+		if (this.saldo < (valor + 0.10)) {
+			System.out.println("Saldo insuficiente!!!");
+			return false;
 
-    public Double getChequeEspecial() {
-        return chequeEspecial;
-    }
+		} else {
+			this.saldo = this.saldo - (valor + 0.10);
+			this.taxas = this.taxas + 0.10;
+			return true;
 
-    public void setChequeEspecial(Double chequeEspecial) {
-        this.chequeEspecial = chequeEspecial;
-    }
+		}
+	}
 
-    public Double getTaxa() {
-        return taxa;
-    }
+	@Override
+	public boolean depositar(double valor) {
+        if (valor < 0) {
+            return false;
+        } else {
+            this.saldo += (valor - 0.10);
+			this.taxas = this.taxas + 0.10;
+            return true;
+        }
+	}
 
-    public void setTaxa(Double taxa) {
-        this.taxa = taxa;
-    }
+	@Override
+	public boolean transferir(double valor, Conta nomeConta) {
+		if (this.saldo >= (valor + 0.20)) {
+			nomeConta.saldo = nomeConta.saldo + valor;
+			this.saldo = this.saldo - (valor + 0.20);
+			this.taxas = this.taxas + 0.20;
+			return true;
 
-    public Integer getTotalSaques() {
-        return numeroTotalSaques;
-    }
+		} else {
+			System.out.println("Não há saldo suficiente para transferir esse valor!!!");
+			return false;
 
-    public void setTotalSaques(Integer numeroTotalSaques) {
-        this.numeroTotalSaques = numeroTotalSaques;
-    }
+		}
+	}
 
-    public Integer getTotalDepositos() {
-        return numeroTotalDepositos;
-    }
+	public double consultaTotalTaxas() {
+		return this.taxas;
 
-    public void setTotalDepositos(Integer numeroTotalDepositos) {
-        this.numeroTotalDepositos = numeroTotalDepositos;
-    }
-
-    public Integer getTotalTransferencias() {
-        return numeroTotalTransferencias;
-    }
-
-    public void setTotalTransferencias(Integer numeroTotalTransferencias) {
-        this.numeroTotalTransferencias = numeroTotalTransferencias;
-    }
-
-    public Double getTotalTributado() {
-        return numeroTotalTributado;
-    }
-
-    public void setTotalTributado(Double numeroTotalTributado) {
-        this.numeroTotalTributado = numeroTotalTributado;
-    }
-
-    public String toString() {
-
-        return "ContaCorrente \nchequeEspecial: " + chequeEspecial + "taxa: " + taxa +
-                "\\nnumeroAgencia: " + getNumeroAgencia() + "\nnumeroConta: " + getNumeroConta() +
-                "\nsaldo: " + getSaldo() + "\ndataAbertura: " + getDataAbertura();
-    }
-
+	}
 }

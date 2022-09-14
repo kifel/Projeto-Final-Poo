@@ -1,7 +1,8 @@
 package br.com.poo.pessoas;
 
 public class Presidente extends Funcionario {
-	//Atributos herdados
+	String senha;
+  //Atributos herdados
 
 
 	public Presidente() {
@@ -14,8 +15,5 @@ public class Presidente extends Funcionario {
 				email, dataNascimento);
 		
 	}
-	
-	
-	
 	
 }
