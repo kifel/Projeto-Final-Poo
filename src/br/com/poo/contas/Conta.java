@@ -1,7 +1,5 @@
 package br.com.poo.contas;
 
-import java.time.LocalDate;
-
 public abstract class Conta {
 
     private String titular;
@@ -9,7 +7,7 @@ public abstract class Conta {
     private String numeroConta;
     protected int tipoConta;
     protected Double saldo;
-    private LocalDate dataAbertura;
+    private String dataAbertura;
     private String cpf;
 
     public Conta() {
@@ -17,7 +15,7 @@ public abstract class Conta {
     }
 
     public Conta(String titular, String numeroAgencia, String numeroConta, int tipoConta, Double saldo,
-            LocalDate dataAbertura, String cpf) {
+    String dataAbertura, String cpf) {
         this.titular = titular;
         this.numeroAgencia = numeroAgencia;
         this.numeroConta = numeroConta;
@@ -63,11 +61,11 @@ public abstract class Conta {
         return saldo;
     }
 
-    public LocalDate getDataAbertura() {
+    public String getDataAbertura() {
         return dataAbertura;
     }
 
-    public void setDataAbertura(LocalDate dataAbertura) {
+    public void setDataAbertura(String dataAbertura) {
         this.dataAbertura = dataAbertura;
     }
 
