@@ -1,9 +1,16 @@
 package br.com.poo.pessoas;
 
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.HashMap;
+
 public class Funcionario extends Pessoa {
     double salario;
     String senha;
     String tipoPessoa;
+    
+    public static Map<String, Funcionario> mapaFuncionario = new HashMap<String, Funcionario>();
+    public static TreeMap<String, Funcionario> ordenaFuncionario = new TreeMap<String, Funcionario>();
     
 	public Funcionario() {
 		super();
