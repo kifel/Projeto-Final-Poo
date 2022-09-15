@@ -6,7 +6,6 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
 
 import br.com.poo.contas.Conta;
 import br.com.poo.contas.ContaCorrente;
@@ -14,9 +13,13 @@ import br.com.poo.contas.ContaPoupanca;
 import br.com.poo.enums.*;
 import br.com.poo.pessoas.*;
 
+import br.com.poo.sistemainterno.App;
+
+
 public class LeituraArquivo {
   static final String PATH_BASIC = "./temp/";
   static final String EXTENSION = ".txt";
+  static App app = new App();
 
   public static void leitor(String path) throws IOException {
     try {
@@ -28,7 +31,7 @@ public class LeituraArquivo {
     
       if (line != null) {
         String[] data = line.split(";");
-  
+
         if(data[0].equalsIgnoreCase(ContaEnum.POUPANCA.getTipoConta())) {
           ContaPoupanca contaP = new ContaPoupanca(data[0], data[1], data[2], data[3], Double.parseDouble(data[4]), data[5], data[6]);
           Conta.mapaContas.put(data[6], contaP);
@@ -51,10 +54,6 @@ public class LeituraArquivo {
           OperadorCaixa operadorCaixa = new OperadorCaixa(data[0], Double.parseDouble(data[1]), data[2],data[3], data[4], data[5], data[6], data[7], data[8], data[9]);
           Funcionario.mapaFuncionario.put(data[6], operadorCaixa);
           Funcionario.ordenaFuncionario.put(data[3], operadorCaixa);
-        }else if(data[0].equals(PessoasEnum.GERENTE.getTipoPessoa())) {
-          Gerente gerente = new Gerente(Integer.parseInt(data[0]),data[1],Double.parseDouble(data[2]), data[3], data[4], data[5], data[6], data[7], data[8], data[9], data[10]);
-          Funcionario.mapaFuncionario.put(data[7], gerente);
-          Funcionario.ordenaFuncionario.put(data[3], gerente);
         }
       } else {
         break;
@@ -68,20 +67,34 @@ public class LeituraArquivo {
   }
 
 
-  public static void escritor () throws IOException {
-    Scanner sc = new Scanner(System.in);
-    System.out.println("Escreva o nome do arquivo do relatório: ");
-    String path = sc.next();
+  public static void escritorSaque(Conta conta, double Valor) throws IOException {
 
-try {
-    BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASIC + path + EXTENSION, true));
+
+    String arq = conta.getTitular() + "_Comprovante_Saque";
+    try (BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASIC + arq + EXTENSION, true));) {
     
+    String linha = "============ saque ============";
+    buffWrite.append(linha + "\n");
 
-    String linha = sc.next();
-    buffWrite.append(linha);
-    buffWrite.newLine();
-    buffWrite.close();
-    sc.close();
+    linha = "Agência: " + conta.getNumeroAgencia();
+    buffWrite.append(linha + "\n");
+
+    linha = "Conta: " + conta.getNumeroConta();
+    buffWrite.append(linha + "\n");
+
+    linha = "Valor: R$ " + Valor;
+    buffWrite.append(linha + "\n");
+
+
+    linha = app.data();
+    buffWrite.append(linha + "\n");
+
+    linha = "============= fim do saque =============";
+    buffWrite.append(linha + "\n");
+
+
+    buffWrite.close();  
+
 } catch (IOException e) {
   e.printStackTrace();
 } catch(Exception e) {
