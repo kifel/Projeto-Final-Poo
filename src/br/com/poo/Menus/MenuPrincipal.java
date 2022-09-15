@@ -42,7 +42,7 @@ public class MenuPrincipal {
     public void menuCadastro() {
         String choice;
         String data;
-        int tipoConta;
+        String tipoConta;
 
         app.linhaMenu();
         System.out.println("\n|         Escolha o tipo de conta           |");
@@ -55,7 +55,7 @@ public class MenuPrincipal {
         switch (choice) {
             case "1":
                 data = app.data();
-                tipoConta = Integer.parseInt(choice);
+                tipoConta = "CORRENTE";
                 System.out.print("Digite o nome do titular da conta: ");
                 String titular = myObj.nextLine();
                 System.out.printf("\nDigite o número da agencia: ");
@@ -64,7 +64,7 @@ public class MenuPrincipal {
                 String numeroConta = myObj.nextLine();
                 System.out.println("\nDigite o cpf: ");
                 String cpf = myObj.nextLine();
-                ContaCorrente cs = new ContaCorrente(titular, numeroAgencia, numeroConta, tipoConta, 0.0, data, cpf);
+                ContaCorrente cs = new ContaCorrente(tipoConta, titular, numeroAgencia, numeroConta, 0.0, data, cpf);
                 app.limparTela();
                 System.out.println("Conta Criada com o saldo de " + cs.getSaldo());
                 System.out.println("Data de criação de conta " + cs.getDataAbertura());
@@ -72,7 +72,7 @@ public class MenuPrincipal {
                 break;
             case "2":
                 data = app.data();
-                tipoConta = Integer.parseInt(choice);
+                tipoConta = "POUPANCA";
                 System.out.print("Digite o nome do titular da conta: ");
                 String titularcp = myObj.nextLine();
                 System.out.printf("\nDigite o número da agencia: ");

@@ -1,25 +1,30 @@
 package br.com.poo.contas;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public abstract class Conta {
 
-    private String titular;
-    private String numeroAgencia;
-    private String numeroConta;
-    protected int tipoConta;
+    protected String tipoConta;
+    protected String titular;
+    protected String numeroAgencia;
+    protected String numeroConta;
     protected Double saldo;
-    private String dataAbertura;
-    private String cpf;
+    protected String dataAbertura;
+    protected String cpf;
+
+    public static Map<String, Conta> mapaContas = new HashMap<>();
 
     public Conta() {
 
     }
 
-    public Conta(String titular, String numeroAgencia, String numeroConta, int tipoConta, Double saldo,
-    String dataAbertura, String cpf) {
+    public Conta(String tipoConta, String titular, String numeroAgencia, String numeroConta, Double saldo,
+            String dataAbertura, String cpf) {
+        this.tipoConta = tipoConta;
         this.titular = titular;
         this.numeroAgencia = numeroAgencia;
         this.numeroConta = numeroConta;
-        this.tipoConta = tipoConta;
         this.saldo = saldo;
         this.dataAbertura = dataAbertura;
         this.cpf = cpf;
@@ -49,11 +54,11 @@ public abstract class Conta {
         this.numeroConta = numeroConta;
     }
 
-    public int getTipoConta() {
+    public String getTipoConta() {
         return tipoConta;
     }
 
-    public void setTipoConta(int tipoConta) {
+    public void setTipoConta(String tipoConta) {
         this.tipoConta = tipoConta;
     }
 

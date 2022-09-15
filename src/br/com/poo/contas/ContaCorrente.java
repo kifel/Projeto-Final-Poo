@@ -2,68 +2,89 @@ package br.com.poo.contas;
 
 import br.com.poo.tributos.Tributo;
 
-public class ContaCorrente extends Conta implements Tributo{
+public class ContaCorrente extends Conta implements Tributo {
 
-	protected double taxas;
+	private double taxas;
+	private Integer totalSaques = 0;
 
 	public ContaCorrente() {
-
+		super();
 	}
 
-	public ContaCorrente(String titular, String numeroAgencia, String numeroConta, int tipoConta, Double saldo,
+	public ContaCorrente(String tipoConta, String titular, String numeroAgencia, String numeroConta, Double saldo,
 			String dataAbertura, String cpf) {
-		super(titular, numeroAgencia, numeroConta, tipoConta, saldo, dataAbertura, cpf);
+		super(tipoConta, titular, numeroAgencia, numeroConta, saldo, dataAbertura, cpf);
+	}
+
+	public double getTaxas() {
+		return taxas;
+	}
+
+	public Integer getTotalSaques() {
+		return totalSaques;
 	}
 
 	@Override
 	public double tributarSaque(double valor) {
-		// TODO Auto-generated method stub
-		return 0;
+		return valor + Tributo.SAQUE;
 	}
-
+		
 	@Override
 	public double tributarDeposito(double valor) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	
 	@Override
 	public double tributarTransferencia(double valor) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public boolean sacar(double valor) {
-		if (this.saldo < (valor + 0.10)) {
+		double valorTributado = tributarSaque(valor);
+		if (valor < 0) {
+			System.out.println("O valor digitado para saque é inválido!");
+			return false;
+		}else 
+		if (this.saldo - valorTributado >= 0) {
+			this.saldo -= valorTributado;
+			this.taxas += Tributo.SAQUE;
+			System.out.println("\nOperação realizada com sucesso!\n");
+			System.out.printf("Valor sacado: R$%.2f", valor, "\n");
+			System.out.printf("Saldo atual: R$%.2f", this.saldo, "\n");
+			++totalSaques;
+			return true;
+		} else {
 			System.out.println("Saldo insuficiente!!!");
 			return false;
-
-		} else {
-			this.saldo = this.saldo - (valor + 0.10);
-			this.taxas = this.taxas + 0.10;
-			return true;
-
 		}
 	}
 
 	@Override
 	public boolean depositar(double valor) {
+		double valorTributado = tributarDeposito(valor);
 		if (valor < 0) {
 			return false;
 		} else {
-			this.saldo += (valor - 0.10);
-			this.taxas = this.taxas + 0.10;
+			this.saldo += (valor - valorTributado);
+			this.taxas += valorTributado;
+			System.out.println("\nOperação realizada com sucesso!\n");
+			System.out.printf("Valor depositado: R$%.2f", valor, "\n");
+			System.out.printf("Saldo atual: R$%.2f", this.saldo, "\n");
 			return true;
 		}
 	}
 
 	@Override
 	public boolean transferir(double valor, Conta nomeConta) {
-		if (this.saldo >= (valor + 0.20)) {
+		double valorTributado = tributarTransferencia(valor);
+		if (this.saldo >= valorTributado) {
 			nomeConta.saldo = nomeConta.saldo + valor;
-			this.saldo = this.saldo - (valor + 0.20);
-			this.taxas = this.taxas + 0.20;
+			this.saldo -= valorTributado;
+			this.taxas += valorTributado;
+			System.out.println("\nOperação realizada com sucesso!\n");
+			System.out.printf("Valor Transferido de : R$%.2f", valor, "\n");
+			System.out.printf("Saldo atual: R$%.2f", this.saldo, "\n");
 			return true;
 
 		} else {
@@ -78,5 +99,10 @@ public class ContaCorrente extends Conta implements Tributo{
 
 	}
 
+	@Override
+	public String toString() {
+		return "Conta Corrente\tNúmero da Agência = " + this.numeroAgencia + "\tNúmero da Conta = "
+				+ this.numeroConta + "\tSaldo = " + this.saldo + "\tCPF = " + this.cpf + "\n";
+	}
 
 }
