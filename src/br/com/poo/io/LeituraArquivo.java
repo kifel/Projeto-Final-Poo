@@ -28,13 +28,29 @@ public class LeituraArquivo {
     
       if (line != null) {
         String[] data = line.split(";");
-
+  
         if(data[0].equalsIgnoreCase(ContaEnum.POUPANCA.getTipoConta())) {
           ContaPoupanca contaP = new ContaPoupanca(data[0], data[1], data[2], data[3], Double.parseDouble(data[4]), data[5], data[6]);
           Conta.mapaContas.put(data[6], contaP);
-        }else if(data[0].equals(ContaEnum.CORRENTE.getTipoConta())){
+        }else if(data[0].equalsIgnoreCase(ContaEnum.CORRENTE.getTipoConta())){
           ContaCorrente contaC = new ContaCorrente(data[0], data[1],data[4], data[3], Double.parseDouble(data[4]),data[5],data[6] );
           Conta.mapaContas.put(data[6], contaC);
+        }else if(data[0].equalsIgnoreCase(PessoasEnum.GERENTE.getTipoPessoa())) {
+          Gerente gerente = new Gerente(Integer.parseInt(data[0]),data[1],Double.parseDouble(data[2]), data[3], data[4], data[5], data[6], data[7], data[8], data[9], data[10]);
+          Funcionario.mapaFuncionario.put(data[7], gerente);
+          Funcionario.ordenaFuncionario.put(data[3], gerente);
+        }else if(data[0].equalsIgnoreCase(PessoasEnum.DIRETOR.getTipoPessoa())) {
+          Diretor diretor = new Diretor(data[0], Double.parseDouble(data[1]), data[2],data[3], data[4], data[5], data[6], data[7], data[8], data[9]);
+          Funcionario.mapaFuncionario.put(data[6], diretor);
+          Funcionario.ordenaFuncionario.put(data[3], diretor);
+        } else if(data[0].equalsIgnoreCase(PessoasEnum.PRESIDENTE.getTipoPessoa())) {
+          Presidente presidente = new Presidente(data[0], data[1], Double.parseDouble(data[2]),data[3], data[4], data[5], data[6], data[7], data[8], data[9]);
+          Funcionario.mapaFuncionario.put(data[6], presidente);
+          Funcionario.ordenaFuncionario.put(data[3], presidente);
+        }else if(data[0].equalsIgnoreCase(PessoasEnum.OPERADOR_CAIXA.getTipoPessoa())) {
+          OperadorCaixa operadorCaixa = new OperadorCaixa(data[0], Double.parseDouble(data[1]), data[2],data[3], data[4], data[5], data[6], data[7], data[8], data[9]);
+          Funcionario.mapaFuncionario.put(data[6], operadorCaixa);
+          Funcionario.ordenaFuncionario.put(data[3], operadorCaixa);
         }else if(data[0].equals(PessoasEnum.GERENTE.getTipoPessoa())) {
           Gerente gerente = new Gerente(Integer.parseInt(data[0]),data[1],Double.parseDouble(data[2]), data[3], data[4], data[5], data[6], data[7], data[8], data[9], data[10]);
           Funcionario.mapaFuncionario.put(data[7], gerente);
