@@ -4,8 +4,6 @@ import java.util.Scanner;
 import br.com.poo.sistemainterno.App;
 import br.com.poo.contas.ContaCorrente;
 import br.com.poo.contas.ContaPoupanca;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class MenuPrincipal {
 
@@ -44,7 +42,7 @@ public class MenuPrincipal {
     public void menuCadastro() {
         String choice;
         String data;
-        int tipoConta;
+        String tipoConta;
 
         app.linhaMenu();
         System.out.println("\n|         Escolha o tipo de conta           |");
@@ -56,8 +54,8 @@ public class MenuPrincipal {
 
         switch (choice) {
             case "1":
-                data = data();
-                tipoConta = Integer.parseInt(choice);
+                data = app.data();
+                tipoConta = "CORRENTE";
                 System.out.print("Digite o nome do titular da conta: ");
                 String titular = myObj.nextLine();
                 System.out.printf("\nDigite o número da agencia: ");
@@ -66,16 +64,15 @@ public class MenuPrincipal {
                 String numeroConta = myObj.nextLine();
                 System.out.println("\nDigite o cpf: ");
                 String cpf = myObj.nextLine();
-                ContaCorrente cs = new ContaCorrente(titular, numeroAgencia, numeroConta, tipoConta, 0.0, data, cpf,
-                        0.0);
+                ContaCorrente cs = new ContaCorrente(tipoConta, titular, numeroAgencia, numeroConta, 0.0, data, cpf);
                 app.limparTela();
                 System.out.println("Conta Criada com o saldo de " + cs.getSaldo());
                 System.out.println("Data de criação de conta " + cs.getDataAbertura());
                 menuInicio();
                 break;
             case "2":
-                data = data();
-                tipoConta = Integer.parseInt(choice);
+                data = app.data();
+                tipoConta = "POUPANCA";
                 System.out.print("Digite o nome do titular da conta: ");
                 String titularcp = myObj.nextLine();
                 System.out.printf("\nDigite o número da agencia: ");
@@ -95,13 +92,6 @@ public class MenuPrincipal {
                 System.out.println("Opção invalida, tente novamente");
                 menuCadastro();
         }
-    }
-
-    public String data() {
-        LocalDateTime data = LocalDateTime.now();
-        DateTimeFormatter formatada = DateTimeFormatter.ofPattern("dd/MM/yyyy 'as' hh:mm:ss a");
-        String dataFormatada = data.format(formatada);
-        return dataFormatada;
     }
 
 }

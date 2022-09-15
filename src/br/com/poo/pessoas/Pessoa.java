@@ -2,13 +2,13 @@ package br.com.poo.pessoas;
 
 public abstract class Pessoa {
 
-	private String nome;
-	private String genero;
-	private String estadoCivil;
-	private String cpf;
-	private String telefone;
-	private String email;
-	private String dataNascimento;
+	protected String nome;
+	protected String genero;
+	protected String estadoCivil;
+	protected String cpf;
+	protected String telefone;
+	protected String email;
+	protected String dataNascimento;
 
 	public Pessoa() {
 		super();
@@ -69,7 +69,8 @@ public abstract class Pessoa {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public String listagem() {
+
+	public String toString() {
 		return "Pessoa [nome=" + nome + ", genero=" + genero + ", estadoCivil="
 				+ estadoCivil + ", cpf=" + cpf + ", telefone=" + telefone + ", email=" + email + ", dataNascimento="
 				+ dataNascimento + "]";
