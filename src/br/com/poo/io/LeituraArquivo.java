@@ -51,6 +51,10 @@ public class LeituraArquivo {
           OperadorCaixa operadorCaixa = new OperadorCaixa(data[0], Double.parseDouble(data[1]), data[2],data[3], data[4], data[5], data[6], data[7], data[8], data[9]);
           Funcionario.mapaFuncionario.put(data[6], operadorCaixa);
           Funcionario.ordenaFuncionario.put(data[3], operadorCaixa);
+        }else if(data[0].equals(PessoasEnum.GERENTE.getTipoPessoa())) {
+          Gerente gerente = new Gerente(Integer.parseInt(data[0]),data[1],Double.parseDouble(data[2]), data[3], data[4], data[5], data[6], data[7], data[8], data[9], data[10]);
+          Funcionario.mapaFuncionario.put(data[7], gerente);
+          Funcionario.ordenaFuncionario.put(data[3], gerente);
         }
       } else {
         break;
