@@ -1,11 +1,17 @@
 package br.com.poo.io;
 
+// Importing the necessary libraries to use the methods.
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+
+import br.com.poo.contas.Conta;
+import br.com.poo.contas.ContaCorrente;
+import br.com.poo.contas.ContaPoupanca;
+import br.com.poo.enums.*;
 
 public class LeituraArquivo {
   static final String PATH_BASIC = "./temp/";
@@ -14,13 +20,21 @@ public class LeituraArquivo {
   public static void leitor(String path) throws IOException {
     try {
     BufferedReader buffRead = new BufferedReader(new FileReader(PATH_BASIC + path + EXTENSION));
-    String linha = "";
+    String line = "";
 
     while(true) {
-      linha = buffRead.readLine();  
+      line = buffRead.readLine();  
     
-      if (linha != null) {
-        System.out.println(linha);
+      if (line != null) {
+        String[] data = line.split(";");
+
+        if(data[0].equalsIgnoreCase(ContaEnum.POUPANCA.getTipoConta())) {
+          ContaPoupanca contaP = new ContaPoupanca(data[0], data[1], data[2], data[3], Double.parseDouble(data[4]), data[5], data[6]);
+          Conta.mapaContas.put(data[6], contaP);
+        }else if(data[0].equals(ContaEnum.CORRENTE.getTipoConta())){
+          ContaCorrente contaC = new ContaCorrente(data[0], data[1],data[4], data[3], Double.parseDouble(data[4]),data[5],data[6] );
+          Conta.mapaContas.put(data[6], contaC);
+        }
       } else {
         break;
       }
