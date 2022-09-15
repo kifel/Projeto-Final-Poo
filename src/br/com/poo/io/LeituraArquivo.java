@@ -12,6 +12,7 @@ import br.com.poo.contas.Conta;
 import br.com.poo.contas.ContaCorrente;
 import br.com.poo.contas.ContaPoupanca;
 import br.com.poo.enums.*;
+import br.com.poo.pessoas.*;
 
 public class LeituraArquivo {
   static final String PATH_BASIC = "./temp/";
@@ -34,6 +35,10 @@ public class LeituraArquivo {
         }else if(data[0].equals(ContaEnum.CORRENTE.getTipoConta())){
           ContaCorrente contaC = new ContaCorrente(data[0], data[1],data[4], data[3], Double.parseDouble(data[4]),data[5],data[6] );
           Conta.mapaContas.put(data[6], contaC);
+        }else if(data[0].equals(PessoasEnum.GERENTE.getTipoPessoa())) {
+          Gerente gerente = new Gerente(Integer.parseInt(data[0]),data[1],Double.parseDouble(data[2]), data[3], data[4], data[5], data[6], data[7], data[8], data[9], data[10]);
+          Funcionario.mapaFuncionario.put(data[7], gerente);
+          Funcionario.ordenaFuncionario.put(data[3], gerente);
         }
       } else {
         break;
