@@ -30,8 +30,4 @@ public class Cliente extends Pessoa {
 	public void setAgencia(int agencia) {
 		this.agencia = agencia;
 	}
-	
-	
-    
-    
 }

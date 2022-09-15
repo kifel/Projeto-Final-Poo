@@ -37,4 +37,9 @@ public class Funcionario extends Pessoa {
 	public void setTipoPessoa(String tipoPessoa) {
 		this.tipoPessoa = tipoPessoa;
 	}
+	
+	
+	public String relatorioFuncionario() {
+		return "Nome: " + this.nome + "\nCPF: " + this.cpf + "\nCargo: " + this.tipoPessoa;
+	}
 }
