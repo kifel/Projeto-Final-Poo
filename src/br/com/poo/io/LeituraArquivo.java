@@ -12,7 +12,9 @@ import br.com.poo.contas.ContaCorrente;
 import br.com.poo.contas.ContaPoupanca;
 import br.com.poo.enums.*;
 import br.com.poo.pessoas.*;
+
 import br.com.poo.sistemainterno.App;
+
 
 public class LeituraArquivo {
   static final String PATH_BASIC = "./temp/";
@@ -29,7 +31,7 @@ public class LeituraArquivo {
     
       if (line != null) {
         String[] data = line.split(";");
-          
+
         if(data[0].equalsIgnoreCase(ContaEnum.POUPANCA.getTipoConta())) {
           ContaPoupanca contaP = new ContaPoupanca(data[0], data[1], data[2], data[3], Double.parseDouble(data[4]), data[5], data[6]);
           Conta.mapaContas.put(data[6], contaP);
