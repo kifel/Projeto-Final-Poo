@@ -41,7 +41,7 @@ public class Agencia {
 
 
 	public String toString() {
-		return "\n Numero Agencia: " + numeroAgencia+ "\n no endereco: " + Endereco;
+		return "\n Numero Agencia: " + numeroAgencia+ "\n no endereço: " + Endereco;
 	}
 	
 	
