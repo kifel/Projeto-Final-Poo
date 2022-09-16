@@ -115,19 +115,13 @@ public class MenuPrincipal {
             System.out.println(Cliente.mapaCliente.get(cpf));
 
             while (cliente == null || !(cliente.getSenha().equals(senha))) {
-                System.out.println("CPF e/ou Senha incorreto(s)\n\n");
-                System.out.print("Digite seu CPF: ");
-                cpf = myObj.next();
-                System.out.print("Digite sua senha: ");
-                senha = myObj.next();
-                cliente = (Cliente) Cliente.mapaCliente.get(cpf);
-                conta = (Conta) Conta.mapaContas.get(cpf);
+                menuLogar();
             }
+            System.out.println("LOGADO COM SUCESSO");
         } catch (Exception e) {
             System.out.println(e.getMessage());
-        } finally {
-            menuLogar();
         }
+        
         myObj.close();
     }
 }
