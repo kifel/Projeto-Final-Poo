@@ -318,6 +318,8 @@ public class MenuOpcao {
                     System.out.println("Erro 404");
                     menuCliente(pessoa, conta);
                 }
+            }else {
+                // menuFuncionario();
             }
 
         } catch (Exception e) {
