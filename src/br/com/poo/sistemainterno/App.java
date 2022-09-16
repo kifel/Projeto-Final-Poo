@@ -8,7 +8,7 @@ public class App {
     final int STRAM = 45;
 
     public void limparTela() {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < STRAM; i++) {
             System.out.println();
         }
     }

@@ -31,19 +31,20 @@ public class LeituraArquivo {
         line = buffRead.readLine();
         if (line != null) {
           String[] data = line.split(";");
-          if (data[1].equalsIgnoreCase(ContaEnum.POUPANCA.getTipoConta())) {
-            ContaPoupanca contaP = new ContaPoupanca(data[1], data[2], data[3], data[4], Double.parseDouble(data[5]),
-                data[6], data[7]);
-            Conta.mapaContas.put(data[7], contaP);
-          } else if (data[1].equalsIgnoreCase(ContaEnum.CORRENTE.getTipoConta())) {
+          if (data[1].equalsIgnoreCase(ContaEnum.CORRENTE.getTipoConta())) {
             ContaCorrente contaC = new ContaCorrente(data[1], data[2], data[3], data[4], Double.parseDouble(data[5]),
                 data[6], data[7]);
             Conta.mapaContas.put(data[7], contaC);
+            if (data[1].equalsIgnoreCase(ContaEnum.POUPANCA.getTipoConta())) {
+              ContaPoupanca contaP = new ContaPoupanca(data[1], data[2], data[3], data[4], Double.parseDouble(data[5]),
+                  data[6], data[7]);
+              Conta.mapaContas.put(data[7], contaP);
+            } else if (data[0].equalsIgnoreCase(PessoasEnum.CLIENTE.getTipoPessoa())) {
+              Cliente cliente = new Cliente(data[2], data[10], data[12], data[7], data[11], data[8], data[13], data[9],
+                  Integer.parseInt(data[3]));
+              Cliente.mapaCliente.put(data[7], cliente);
 
-          } else if (data[0].equalsIgnoreCase(PessoasEnum.CLIENTE.getTipoPessoa())) {
-            Cliente cliente = new Cliente(data[2], data[10], data[12], data[7], data[11], data[8], data[13], data[9],
-                Integer.parseInt(data[3]));
-            Cliente.mapaCliente.put(data[7], cliente);
+            }
           } else if (data[0].equalsIgnoreCase(PessoasEnum.GERENTE.getTipoPessoa())) {
             Gerente gerente = new Gerente(data[2], data[10], data[12], data[7], data[11], data[8], data[13], data[9],
                 Double.parseDouble(data[5]), data[0], Integer.parseInt(data[3]));
