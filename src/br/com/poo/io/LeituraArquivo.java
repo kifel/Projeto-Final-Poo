@@ -42,31 +42,29 @@ public class LeituraArquivo {
             } else if (data[0].equalsIgnoreCase(PessoasEnum.CLIENTE.getTipoPessoa())) {
               Cliente cliente = new Cliente(data[2], data[10], data[12], data[7], data[11], data[8], data[13], data[9],
                   Integer.parseInt(data[3]));
-              Cliente.mapaCliente.put(data[7], cliente);
+              Cliente.mapaPessoas.put(data[7], cliente);
 
             }
           } else if (data[0].equalsIgnoreCase(PessoasEnum.GERENTE.getTipoPessoa())) {
-            Gerente gerente = new Gerente(data[2], data[10], data[12], data[7], data[11], data[8], data[13], data[9],
-                Double.parseDouble(data[5]), data[0], Integer.parseInt(data[3]));
-            Funcionario.mapaFuncionario.put(data[7], gerente);
-            Funcionario.ordenaFuncionario.put(data[3], gerente);
+            Gerente gerente = new Gerente(data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8],
+                Double.parseDouble(data[9]), data[0], Integer.parseInt(data[10]));
+            Funcionario.mapaFuncionario.put(data[4], gerente);
+            Funcionario.ordenaFuncionario.put(data[1], gerente);
           } else if (data[0].equalsIgnoreCase(PessoasEnum.DIRETOR.getTipoPessoa())) {
-            Diretor diretor = new Diretor(data[2], data[10], data[12], data[7], data[11], data[8], data[13], data[9],
-                Double.parseDouble(data[5]), data[0]);
-            Funcionario.mapaFuncionario.put(data[6], diretor);
-            Funcionario.ordenaFuncionario.put(data[3], diretor);
+            Diretor diretor = new Diretor(data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8],
+                Double.parseDouble(data[9]), data[0]);
+            Funcionario.mapaFuncionario.put(data[4], diretor);
+            Funcionario.ordenaFuncionario.put(data[1], diretor);
           } else if (data[0].equalsIgnoreCase(PessoasEnum.PRESIDENTE.getTipoPessoa())) {
-            Presidente presidente = new Presidente(data[2], data[10], data[12], data[7], data[11], data[8], data[13],
-                data[9],
-                Double.parseDouble(data[5]), data[0]);
-            Funcionario.mapaFuncionario.put(data[6], presidente);
-            Funcionario.ordenaFuncionario.put(data[3], presidente);
+            Presidente presidente = new Presidente(data[1], data[2], data[3], data[4], data[5], data[6], data[7],
+                data[8], Double.parseDouble(data[9]), data[0]);
+            Funcionario.mapaFuncionario.put(data[4], presidente);
+            Funcionario.ordenaFuncionario.put(data[1], presidente);
           } else if (data[0].equalsIgnoreCase(PessoasEnum.OPERADOR_CAIXA.getTipoPessoa())) {
-            OperadorCaixa operadorCaixa = new OperadorCaixa(data[2], data[10], data[12], data[7], data[11], data[8],
-                data[13], data[9],
-                Double.parseDouble(data[5]), data[0]);
-            Funcionario.mapaFuncionario.put(data[6], operadorCaixa);
-            Funcionario.ordenaFuncionario.put(data[3], operadorCaixa);
+            OperadorCaixa operadorCaixa = new OperadorCaixa(data[1], data[2], data[3], data[4], data[5], data[6],
+                data[7], data[8], Double.parseDouble(data[9]), data[0]);
+            Funcionario.mapaFuncionario.put(data[4], operadorCaixa);
+            Funcionario.ordenaFuncionario.put(data[1], operadorCaixa);
           }
         } else {
           break;

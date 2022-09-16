@@ -1,11 +1,11 @@
 package br.com.poo.Menus;
 
+import java.io.IOException;
 import java.util.Scanner;
 import br.com.poo.sistemainterno.App;
 import br.com.poo.contas.Conta;
-import br.com.poo.contas.ContaCorrente;
-import br.com.poo.contas.ContaPoupanca;
-import br.com.poo.pessoas.Cliente;
+import br.com.poo.pessoas.Funcionario;
+import br.com.poo.pessoas.Pessoa;
 
 public class MenuPrincipal {
 
@@ -18,7 +18,7 @@ public class MenuPrincipal {
 
         app.linhaMenu();
         System.out.println("\n*              [1] - Logar                  *");
-        System.out.println("*             [2] - Cadastro                *");
+        System.out.println("*           [2] - Funcionários              *");
         System.out.println("*              [3] - Sair                   *");
         app.linhaMenu();
         System.out.print("\n\n=> ");
@@ -26,10 +26,10 @@ public class MenuPrincipal {
 
         switch (choice) {
             case "1":
-                menuLogar();
+                menuLogarCliente();
                 break;
             case "2":
-                menuCadastro();
+                menuFuncionario();
                 break;
             case "3":
                 app.limparTela();
@@ -42,62 +42,7 @@ public class MenuPrincipal {
         }
     }
 
-    public void menuCadastro() {
-        String choice;
-        String data;
-        String tipoConta;
-
-        app.linhaMenu();
-        System.out.println("\n|         Escolha o tipo de conta           |");
-        System.out.println("|              [1]- Corrente                |");
-        System.out.println("|              [2]- Poupança                |");
-        app.linhaMenu();
-        System.out.print("\n\n=> ");
-        choice = myObj.nextLine();
-
-        switch (choice) {
-            case "1":
-                data = app.data();
-                tipoConta = "CORRENTE";
-                System.out.print("Digite o nome do titular da conta: ");
-                String titular = myObj.nextLine();
-                System.out.printf("\nDigite o número da agencia: ");
-                String numeroAgencia = myObj.nextLine();
-                System.out.print("\nDigite o número da conta: ");
-                String numeroConta = myObj.nextLine();
-                System.out.println("\nDigite o cpf: ");
-                String cpf = myObj.nextLine();
-                ContaCorrente cs = new ContaCorrente(tipoConta, titular, numeroAgencia, numeroConta, 0.0, data, cpf);
-                app.limparTela();
-                System.out.println("Conta Criada com o saldo de " + cs.getSaldo());
-                System.out.println("Data de criação de conta " + cs.getDataAbertura());
-                menuInicio();
-                break;
-            case "2":
-                data = app.data();
-                tipoConta = "POUPANCA";
-                System.out.print("Digite o nome do titular da conta: ");
-                String titularcp = myObj.nextLine();
-                System.out.printf("\nDigite o número da agencia: ");
-                String numeroAgenciacp = myObj.nextLine();
-                System.out.print("\nDigite o número da conta: ");
-                String numeroContacp = myObj.nextLine();
-                System.out.println("\nDigite o cpf: ");
-                String cpfcp = myObj.nextLine();
-                ContaPoupanca cp = new ContaPoupanca(titularcp, numeroAgenciacp, numeroContacp, tipoConta, 0.0, data,
-                        cpfcp);
-                app.limparTela();
-                System.out.println("Conta Criada com o saldo de " + cp.getSaldo());
-                System.out.println("Data de criação de conta " + cp.getDataAbertura());
-                menuInicio();
-                break;
-            default:
-                System.out.println("Opção invalida, tente novamente");
-                menuCadastro();
-        }
-    }
-
-    public void menuLogar() {
+    public void menuFuncionario() {
         Scanner myObj = new Scanner(System.in);
         String cpf;
         String senha;
@@ -109,18 +54,15 @@ public class MenuPrincipal {
             System.out.print("Digite a sua senha :");
             senha = myObj.nextLine();
 
-            Cliente cliente = (Cliente) Cliente.mapaCliente.get(cpf);
-            Conta conta = (Conta) Conta.mapaContas.get(cpf);
+            Funcionario funcionario = (Funcionario) Funcionario.mapaFuncionario.get(cpf);
 
-            System.out.println(cliente);
-            System.out.println(conta);
-
-            if (cliente == null || !(cliente.getSenha().equals(senha))) {
+            if (funcionario == null || !(funcionario.getSenha().equals(senha))) {
                 app.limparTela();
                 System.out.println("Informações incorretas");
-                menuLogar();
-            }else {
+                menuFuncionario();
+            } else {
                 System.out.println("LOGADO COM SUCESSO");
+                menuFunc(funcionario);
             }
 
         } catch (Exception e) {
@@ -128,5 +70,59 @@ public class MenuPrincipal {
         }
 
         myObj.close();
+    }
+
+    public void menuLogarCliente() {
+        Scanner myObj = new Scanner(System.in);
+        String cpf;
+        String senha;
+
+        try {
+
+            System.out.print("Digite o seu CPF :");
+            cpf = myObj.nextLine();
+            System.out.print("Digite a sua senha :");
+            senha = myObj.nextLine();
+
+            Pessoa pessoa = (Pessoa) Pessoa.mapaPessoas.get(cpf);
+            Conta conta = (Conta) Conta.mapaContas.get(cpf);
+
+            if (pessoa == null || !(pessoa.getSenha().equals(senha))) {
+                app.limparTela();
+                System.out.println("Informações incorretas");
+                menuLogarCliente();
+            } else {
+                System.out.println("LOGADO COM SUCESSO");
+                menuCliente(pessoa, conta);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        myObj.close();
+    }
+
+    public void menuCliente(Pessoa pessoa, Conta conta) throws IOException {
+        try {
+            app.limparTela();
+            System.out.println("Bem-vindo(a) ao seu Banco, " + pessoa.getNome() + "!\n");
+            System.out.println("Escolha uma opção");
+            //menuFuncaoCliente
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void menuFunc(Funcionario funcionario) throws IOException {
+        try {
+            app.limparTela();
+            System.out.println("Bem-vindo(a) ao seu trabalho, " + funcionario.getNome() + "!\n");
+            System.out.println("Você tem a função de " + funcionario.getTipoPessoa() + "!\n");
+            System.out.println("RELATÓRIOS");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 }
