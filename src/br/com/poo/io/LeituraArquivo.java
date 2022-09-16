@@ -78,7 +78,7 @@ public class LeituraArquivo {
     }
   }
 
-  public static void atualizadata(Conta conta) {
+  public static void atualizadata(Conta conta) throws IOException {
     BufferedWriter buffWrite;
     BufferedReader buffRead;
     String arq = "./temp/data.txt";
@@ -104,7 +104,7 @@ public class LeituraArquivo {
     new File(arqtmp).renameTo(new File(arq));
   }
 
-  public static void escritorSaque(Conta conta, double Valor) throws IOException {
+  public static void escritorSaque(Conta conta, double Valor, String tipoConta) throws IOException {
 
     String arq = conta.getTitular() + "_Comprovante_Saque";
     try (BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASIC + arq + EXTENSION, true));) {
@@ -112,10 +112,20 @@ public class LeituraArquivo {
       String linha = "============ saque ============";
       buffWrite.append(linha + "\n");
 
-      linha = "Agência: " + conta.getNumeroAgencia();
+      linha = "Nome: " + conta.getTitular();
       buffWrite.append(linha + "\n");
 
-      linha = "Conta: " + conta.getNumeroConta();
+      linha = "Agencia: " + conta.getNumeroAgencia();
+      buffWrite.append(linha + "\n");
+      if (tipoConta.equalsIgnoreCase(ContaEnum.CORRENTE.getTipoConta())) {
+        linha = "Conta: corrente";
+        buffWrite.append(linha + "\n");
+      } else if (tipoConta.equalsIgnoreCase(ContaEnum.POUPANCA.getTipoConta())) {
+        linha = "Conta: poupança";
+        buffWrite.append(linha + "\n");
+      }
+
+      linha = "Numero da Conta: " + conta.getNumeroConta();
       buffWrite.append(linha + "\n");
 
       linha = "Valor: R$ " + Valor;
@@ -135,5 +145,47 @@ public class LeituraArquivo {
       e.printStackTrace();
     }
 
+  }
+
+  public static void escritorTransferencia(Conta conta, double Valor, String tipoConta) throws IOException {
+    String arq = conta.getTitular() + "_Comprovante_Transferencia";
+
+    try (BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASIC + arq + EXTENSION))) {
+
+      String linha = "============ transferencia ============";
+      buffWrite.append(linha + "\n");
+
+      linha = "Nome: " + conta.getTitular();
+      buffWrite.append(linha + "\n");
+
+      linha = "Agencia: " + conta.getNumeroAgencia();
+      buffWrite.append(linha + "\n");
+      if (tipoConta.equalsIgnoreCase(ContaEnum.CORRENTE.getTipoConta())) {
+        linha = "Conta: corrente";
+        buffWrite.append(linha + "\n");
+      } else if (tipoConta.equalsIgnoreCase(ContaEnum.POUPANCA.getTipoConta())) {
+        linha = "Conta: poupança";
+        buffWrite.append(linha + "\n");
+      }
+
+      linha = "Numero da Conta: " + conta.getNumeroConta();
+      buffWrite.append(linha + "\n");
+
+      linha = "Valor: R$ " + Valor;
+      buffWrite.append(linha + "\n");
+
+      linha = app.data();
+      buffWrite.append(linha + "\n");
+
+      linha = "============= fim da transferencia =============";
+      buffWrite.append(linha + "\n");
+
+      buffWrite.close();
+
+    } catch (IOException e) {
+      e.printStackTrace();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 }
