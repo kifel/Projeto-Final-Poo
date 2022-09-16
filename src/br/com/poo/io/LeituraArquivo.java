@@ -15,10 +15,12 @@ import br.com.poo.pessoas.*;
 
 import br.com.poo.sistemainterno.App;
 
+
 public class LeituraArquivo {
   static final String PATH_BASIC = "./temp/";
   static final String EXTENSION = ".txt";
   static App app = new App();
+
   static Cliente cliente = new Cliente();
 
   public static void leitor(String path) throws IOException {
@@ -68,8 +70,9 @@ public class LeituraArquivo {
           }
         } else {
           break;
-        }
-      }
+         }
+          
+       }
 
       buffRead.close();
     } catch (IOException e) {
@@ -77,36 +80,43 @@ public class LeituraArquivo {
     }
   }
 
+  
+
+
+
   public static void escritorSaque(Conta conta, double Valor) throws IOException {
+
 
     String arq = conta.getTitular() + "_Comprovante_Saque";
     try (BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASIC + arq + EXTENSION, true));) {
+    
+    String linha = "============ saque ============";
+    buffWrite.append(linha + "\n");
 
-      String linha = "============ saque ============";
-      buffWrite.append(linha + "\n");
+    linha = "Agência: " + conta.getNumeroAgencia();
+    buffWrite.append(linha + "\n");
 
-      linha = "Agência: " + conta.getNumeroAgencia();
-      buffWrite.append(linha + "\n");
+    linha = "Conta: " + conta.getNumeroConta();
+    buffWrite.append(linha + "\n");
 
-      linha = "Conta: " + conta.getNumeroConta();
-      buffWrite.append(linha + "\n");
+    linha = "Valor: R$ " + Valor;
+    buffWrite.append(linha + "\n");
 
-      linha = "Valor: R$ " + Valor;
-      buffWrite.append(linha + "\n");
 
-      linha = app.data();
-      buffWrite.append(linha + "\n");
+    linha = app.data();
+    buffWrite.append(linha + "\n");
 
-      linha = "============= fim do saque =============";
-      buffWrite.append(linha + "\n");
+    linha = "============= fim do saque =============";
+    buffWrite.append(linha + "\n");
 
-      buffWrite.close();
 
-    } catch (IOException e) {
-      e.printStackTrace();
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+    buffWrite.close();  
 
+} catch (IOException e) {
+  e.printStackTrace();
+} catch(Exception e) {
+  e.printStackTrace();
+}
+    
   }
 }
