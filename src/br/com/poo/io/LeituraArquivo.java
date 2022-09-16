@@ -121,7 +121,7 @@ public class LeituraArquivo {
         linha = "Conta: corrente";
         buffWrite.append(linha + "\n");
       } else if (tipoConta.equalsIgnoreCase(ContaEnum.POUPANCA.getTipoConta())) {
-        linha = "Conta: poupança";
+        linha = "Conta: poupanca";
         buffWrite.append(linha + "\n");
       }
 
@@ -164,7 +164,7 @@ public class LeituraArquivo {
         linha = "Conta: corrente";
         buffWrite.append(linha + "\n");
       } else if (tipoConta.equalsIgnoreCase(ContaEnum.POUPANCA.getTipoConta())) {
-        linha = "Conta: poupança";
+        linha = "Conta: poupanca";
         buffWrite.append(linha + "\n");
       }
 

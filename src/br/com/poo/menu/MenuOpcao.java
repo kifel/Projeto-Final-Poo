@@ -67,8 +67,9 @@ public class MenuOpcao {
                                 System.out.printf("\nValor transferido foi de: R$ %.2f%n", valor);
                                 System.out.print("\nSaldo atual de " + conta.getTitular() + " ");
                                 conta.getSaldo();
-                                menuCliente(pessoa, conta);
                                 LeituraArquivo.escritorTransferencia(conta, valor, "corrente");
+                                menuCliente(pessoa, conta);
+
                             }
                         } else {
                             System.out.println("conta não existe");
@@ -134,8 +135,8 @@ public class MenuOpcao {
                                 System.out.printf("\nValor transferido foi de: R$ %.2f%n", valor);
                                 System.out.print("\nSaldo atual de " + conta.getTitular() + " ");
                                 conta.getSaldo();
-                                menuCliente(pessoa, conta);
                                 LeituraArquivo.escritorTransferencia(conta, valor, "poupanca");
+                                menuCliente(pessoa, conta);
                             }
                         } else {
                             System.out.println("conta não existe");
@@ -224,8 +225,8 @@ public class MenuOpcao {
                                     System.out.printf("\nValor transferido foi de: R$ %.2f%n", valor);
                                     System.out.print("\nSaldo atual de " + conta.getTitular() + " ");
                                     conta.getSaldo();
-                                    menuCliente(pessoa, conta);
                                     LeituraArquivo.escritorTransferencia(conta, valor, "corrente");
+                                    menuCliente(pessoa, conta);
                                 }
                             } else {
                                 System.out.println("conta não existe");
@@ -295,8 +296,8 @@ public class MenuOpcao {
                                     System.out.printf("\nValor transferido foi de: R$ %.2f%n", valor);
                                     System.out.print("\nSaldo atual de " + conta.getTitular() + " ");
                                     conta.getSaldo();
-                                    menuCliente(pessoa, conta);
                                     LeituraArquivo.escritorTransferencia(conta, valor, "poupanca");
+                                    menuCliente(pessoa, conta);
                                 }
                             } else {
                                 System.out.println("conta não existe");
