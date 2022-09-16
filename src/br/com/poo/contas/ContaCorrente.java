@@ -50,8 +50,8 @@ public class ContaCorrente extends Conta implements Tributo {
 			this.saldo -= valorTributado;
 			this.taxas += Tributo.SAQUE;
 			System.out.println("\nOperação realizada com sucesso!\n");
-			System.out.printf("Valor sacado: R$%.2f", valor, "\n");
-			System.out.printf("Saldo atual: R$%.2f", this.saldo, "\n");
+			System.out.printf("\nValor sacado: R$%.2f", valor, "\n");
+			System.out.printf("\nSaldo atual: R$%.2f", this.saldo, "\n");
 			++totalSaques;
 			return true;
 		} else {
@@ -69,8 +69,8 @@ public class ContaCorrente extends Conta implements Tributo {
 			this.saldo += (valor - valorTributado);
 			this.taxas += valorTributado;
 			System.out.println("\nOperação realizada com sucesso!\n");
-			System.out.printf("Valor depositado: R$%.2f", valor, "\n");
-			System.out.printf("Saldo atual: R$%.2f", this.saldo, "\n");
+			System.out.printf("\nValor depositado: R$%.2f", valor, "\n");
+			System.out.printf("\nSaldo atual: R$%.2f", this.saldo, "\n");
 			return true;
 		}
 	}
@@ -83,8 +83,8 @@ public class ContaCorrente extends Conta implements Tributo {
 			this.saldo -= valorTributado;
 			this.taxas += valorTributado;
 			System.out.println("\nOperação realizada com sucesso!\n");
-			System.out.printf("Valor Transferido de : R$%.2f", valor, "\n");
-			System.out.printf("Saldo atual: R$%.2f", this.saldo, "\n");
+			System.out.printf("\nValor Transferido de : R$%.2f", valor, "\n");
+			System.out.printf("\nSaldo atual: R$%.2f", this.saldo, "\n");
 			return true;
 
 		} else {

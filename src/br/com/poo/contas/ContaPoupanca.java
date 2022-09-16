@@ -25,8 +25,8 @@ public class ContaPoupanca extends Conta {
             return false;
         } else {
             System.out.println("\nOperação realizada com sucesso!\n");
-			System.out.printf("Valor sacado: R$%.2f", valor, "\n");
-			System.out.printf("Saldo atual: R$%.2f", this.saldo, "\n");
+			System.out.printf("\nValor sacado: R$%.2f", valor, "\n");
+			System.out.printf("\nSaldo atual: R$%.2f", this.saldo, "\n");
             this.saldo -= valor;
             return true;
         }
@@ -39,8 +39,8 @@ public class ContaPoupanca extends Conta {
         } else {
             this.saldo += valor;
             System.out.println("\nOperação realizada com sucesso!\n");
-			System.out.printf("Valor depositado: R$%.2f", valor, "\n");
-			System.out.printf("Saldo atual: R$%.2f", this.saldo, "\n");
+			System.out.printf("\nValor depositado: R$%.2f", valor, "\n");
+			System.out.printf("\nSaldo atual: R$%.2f", this.saldo, "\n");
             return true;
         }
     }
@@ -54,8 +54,8 @@ public class ContaPoupanca extends Conta {
         } else {
             nomeConta.depositar(valor);
             System.out.println("\nOperação realizada com sucesso!\n");
-			System.out.printf("Valor Transferido de : R$%.2f", valor, "\n");
-			System.out.printf("Saldo atual: R$%.2f", this.saldo, "\n");
+			System.out.printf("\nValor Transferido de : R$%.2f", valor, "\n");
+			System.out.printf("\nSaldo atual: R$%.2f", this.saldo, "\n");
             return true;
         }
     }
@@ -70,10 +70,10 @@ public class ContaPoupanca extends Conta {
 
         rendimentoPoupanca = (this.TAXARENDIMENTO / 365 * dias) * valor;
         System.out.println();
-        System.out.printf("Valor investido: R$ %.2f%n", valor);
-        System.out.printf("Valor do rendimento: R$ %.2f%n", rendimentoPoupanca);
-        System.out.print("Valor total ao fim dos " + dias + " dias:");
-        System.out.printf(" R$ %.2f", (valor + rendimentoPoupanca));
+        System.out.printf("\nValor investido: R$ %.2f%n", valor);
+        System.out.printf("\nValor do rendimento: R$ %.2f%n", rendimentoPoupanca);
+        System.out.print("\nValor total ao fim dos " + dias + " dias:");
+        System.out.printf("\n R$ %.2f", (valor + rendimentoPoupanca));
         System.out.println();
 
         myObj.close();

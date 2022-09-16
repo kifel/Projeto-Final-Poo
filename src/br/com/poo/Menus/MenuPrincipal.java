@@ -1,4 +1,4 @@
-package br.com.poo.Menus;
+package br.com.poo.menus;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -10,9 +10,9 @@ import br.com.poo.pessoas.Pessoa;
 public class MenuPrincipal {
 
     App app = new App();
+    MenuOpcao menu = new MenuOpcao();
     String choice;
-
-    public static Scanner myObj = new Scanner(System.in);
+    Scanner myObj = new Scanner(System.in);
 
     public void menuInicio() {
 
@@ -43,7 +43,6 @@ public class MenuPrincipal {
     }
 
     public void menuFuncionario() {
-        Scanner myObj = new Scanner(System.in);
         String cpf;
         String senha;
 
@@ -73,7 +72,6 @@ public class MenuPrincipal {
     }
 
     public void menuLogarCliente() {
-        Scanner myObj = new Scanner(System.in);
         String cpf;
         String senha;
 
@@ -99,8 +97,6 @@ public class MenuPrincipal {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
-        myObj.close();
     }
 
     public void menuCliente(Pessoa pessoa, Conta conta) throws IOException {
@@ -108,7 +104,7 @@ public class MenuPrincipal {
             app.limparTela();
             System.out.println("Bem-vindo(a) ao seu Banco, " + pessoa.getNome() + "!\n");
             System.out.println("Escolha uma opção");
-            //menuFuncaoCliente
+            menu.menuPrincipal(pessoa, conta);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
