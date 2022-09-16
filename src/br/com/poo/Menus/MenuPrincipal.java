@@ -2,8 +2,10 @@ package br.com.poo.Menus;
 
 import java.util.Scanner;
 import br.com.poo.sistemainterno.App;
+import br.com.poo.contas.Conta;
 import br.com.poo.contas.ContaCorrente;
 import br.com.poo.contas.ContaPoupanca;
+import br.com.poo.pessoas.Cliente;
 
 public class MenuPrincipal {
 
@@ -13,6 +15,7 @@ public class MenuPrincipal {
     public static Scanner myObj = new Scanner(System.in);
 
     public void menuInicio() {
+
         app.linhaMenu();
         System.out.println("\n*              [1] - Logar                  *");
         System.out.println("*             [2] - Cadastro                *");
@@ -23,7 +26,7 @@ public class MenuPrincipal {
 
         switch (choice) {
             case "1":
-                // menuLogar();
+                menuLogar();
                 break;
             case "2":
                 menuCadastro();
@@ -94,4 +97,37 @@ public class MenuPrincipal {
         }
     }
 
+    public void menuLogar() {
+        Scanner myObj = new Scanner(System.in);
+        String cpf;
+        String senha;
+
+        try {
+
+            System.out.print("Digite o seu CPF :");
+            cpf = myObj.nextLine();
+            System.out.print("Digite a sua senha :");
+            senha = myObj.nextLine();
+
+            Cliente cliente = (Cliente) Cliente.mapaCliente.get(cpf);
+            Conta conta = (Conta) Conta.mapaContas.get(cpf);
+
+            System.out.println(Cliente.mapaCliente.get(cpf));
+
+            while (cliente == null || !(cliente.getSenha().equals(senha))) {
+                System.out.println("CPF e/ou Senha incorreto(s)\n\n");
+                System.out.print("Digite seu CPF: ");
+                cpf = myObj.next();
+                System.out.print("Digite sua senha: ");
+                senha = myObj.next();
+                cliente = (Cliente) Cliente.mapaCliente.get(cpf);
+                conta = (Conta) Conta.mapaContas.get(cpf);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            menuLogar();
+        }
+        myObj.close();
+    }
 }

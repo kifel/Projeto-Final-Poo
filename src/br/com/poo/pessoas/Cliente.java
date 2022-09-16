@@ -4,19 +4,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Cliente extends Pessoa {
-	String senha;
-	int agencia;
+	private int agencia;
 	public static Map<String, Cliente> mapaCliente = new HashMap<>();
 
 	public Cliente() {
 		super();
 	}
 
-	public Cliente(String senha, int agencia, String nome, String genero, String estadoCivil,
-			String cpf, String telefone, String email, String dataNascimento) {
-		super(nome, genero, estadoCivil, cpf, telefone, email, dataNascimento);
-
-		this.senha = senha;
+	public Cliente(String nome, String genero, String estadoCivil, String cpf, String telefone, String email,
+			String dataNascimento, String senha, int agencia) {
+		super(nome, genero, estadoCivil, cpf, telefone, email, dataNascimento, senha);
 		this.agencia = agencia;
 	}
 

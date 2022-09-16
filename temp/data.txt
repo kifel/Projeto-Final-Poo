@@ -1,2 +1,1 @@
-TipoPessoa,TipoConta,nome/titular,Agência,Numero da conta,Saldo,DatadeAbertura,cpf,email,senha,genero,telefone,estadoCivil,datadenascimento
-CLIENTE;CORRENTE;Gabriel;154;5646;1500.0;15/09/2022 as 02:55 pm;1565465;gabriel@gmail.com;12345;Masculino,229815662;Casado;12/09/1945
+CLIENTE;CORRENTE;Gabriel;154;5646;1500.0;15/09/2022 as 02:55 pm;111;gabriel@gmail.com;12345;Masculino,229815662;Casado;12/09/1945
