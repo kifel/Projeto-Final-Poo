@@ -21,6 +21,7 @@ public class MenuOpcao {
         try {
 
             if (conta.getTipoConta().equals("CORRENTE")) {
+                System.out.println();
                 app.linhaMenu();
                 System.out.println("\n*           \t[1]-Saque                   *");
                 System.out.println("*           \t[2]-Deposito                *");
@@ -87,6 +88,7 @@ public class MenuOpcao {
                         menuCliente(pessoa, conta);
                 }
             } else if (conta.getTipoConta().equals("POUPANCA")) {
+                System.out.println();
                 app.linhaMenu();
                 System.out.println("\n*           \t[1]-Saque                   *");
                 System.out.println("*           \t[2]-Deposito                *");
@@ -168,10 +170,12 @@ public class MenuOpcao {
     public void menuFuncionarioOp(Pessoa pessoa, Conta conta, Funcionario funcionario) throws IOException {
 
         int opcaoOperacao;
-        
+        MenuOpecaoFuncionario menuF = new MenuOpecaoFuncionario();
+
         try {
             if (conta != null) {
                 if (conta.getTipoConta().equals("CORRENTE")) {
+                    System.out.println();
                     app.linhaMenu();
                     System.out.println("\n*           \t[1]-Saque                   *");
                     System.out.println("*           \t[2]-Deposito                *");
@@ -189,7 +193,7 @@ public class MenuOpcao {
                             Double inputValorSaque = menu.myObj.nextDouble();
                             if (conta.sacar(inputValorSaque)) {
                                 LeituraArquivo.escritorSaque(conta, inputValorSaque, "corrente");
-    
+
                                 LeituraArquivo.atualizadata(conta);
                                 menuCliente(pessoa, conta);
                             } else {
@@ -232,7 +236,7 @@ public class MenuOpcao {
                             // LeituraArquivo.comprovanteSaldo(conta);
                             break;
                         case 5:
-                            //MenuFuncionario();
+                            menuF.menuFuncionario(pessoa, conta, funcionario);
                             break;
                         case 6:
                             menu.menuInicio();
@@ -242,6 +246,7 @@ public class MenuOpcao {
                             menuCliente(pessoa, conta);
                     }
                 } else if (conta.getTipoConta().equals("POUPANCA")) {
+                    System.out.println();
                     app.linhaMenu();
                     System.out.println("\n*           \t[1]-Saque                   *");
                     System.out.println("*           \t[2]-Deposito                *");
@@ -306,7 +311,7 @@ public class MenuOpcao {
                             menuCliente(pessoa, conta);
                             break;
                         case 6:
-                            //MenuFuncionario();
+                            menuF.menuFuncionario(pessoa, conta, funcionario);
                             break;
                         case 7:
                             menu.menuInicio();
@@ -318,8 +323,8 @@ public class MenuOpcao {
                     System.out.println("Erro 404");
                     menuCliente(pessoa, conta);
                 }
-            }else {
-                // menuFuncionario();
+            } else {
+                menuF.menuFuncionario(pessoa, conta, funcionario);
             }
 
         } catch (Exception e) {
