@@ -18,7 +18,6 @@ public class MenuOpecaoFuncionario {
         int opcaoOperacao;
 
         try {
-
             if (funcionario.getTipoPessoa().equals("GERENTE")) {
                 app.linhaMenu();
                 System.out.println("\n*           \t[1]- Relatório Gerente      *");
@@ -30,7 +29,11 @@ public class MenuOpecaoFuncionario {
                     case 1:
                         break;
                     case 2:
-                        menuOp.menuFuncionarioOp(pessoa, conta, funcionario);
+                        if (conta == null) {
+                            menu.menuInicio();
+                        } else {
+                            menuOp.menuFuncionarioOp(pessoa, conta, funcionario);
+                        }
                         break;
                     default:
                         System.out.println("\nOpção inválida!");
@@ -51,7 +54,11 @@ public class MenuOpecaoFuncionario {
                     case 2:
                         break;
                     case 3:
-                        menuOp.menuFuncionarioOp(pessoa, conta, funcionario);
+                        if (conta == null) {
+                            menu.menuInicio();
+                        } else {
+                            menuOp.menuFuncionarioOp(pessoa, conta, funcionario);
+                        }
                         break;
                     default:
                         System.out.println("\nOpção inválida!");
@@ -74,7 +81,11 @@ public class MenuOpecaoFuncionario {
                     case 3:
                         break;
                     case 4:
-                        menuOp.menuFuncionarioOp(pessoa, conta, funcionario);
+                        if (conta == null) {
+                            menu.menuInicio();
+                        } else {
+                            menuOp.menuFuncionarioOp(pessoa, conta, funcionario);
+                        }
                         break;
                     default:
                         System.out.println("\nOpção inválida!");

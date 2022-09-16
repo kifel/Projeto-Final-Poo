@@ -51,14 +51,13 @@ public class MenuOpcao {
                         Double inputValorDeposito = menu.myObj.nextDouble();
                         if (conta.depositar(inputValorDeposito)) {
                             menuCliente(pessoa, conta);
-                            // LeituraArquivo.escritorDeposito(conta, inputValorSaque);
                         } else {
                             menuCliente(pessoa, conta);
                         }
                         break;
                     case 3:
                         app.linhaMenu();
-                        System.out.print("Informe o cpf da conta destino: ");
+                        System.out.print("\nInforme o cpf da conta destino: ");
                         String cpfDestino = menu.myObj.next();
                         Conta contaDestino = Conta.mapaContas.get(cpfDestino);
                         if (contaDestino != null) {
@@ -69,6 +68,7 @@ public class MenuOpcao {
                                 System.out.print("\nSaldo atual de " + conta.getTitular() + " ");
                                 conta.getSaldo();
                                 menuCliente(pessoa, conta);
+                                LeituraArquivo.escritorTransferencia(conta, valor, "corrente");
                             }
                         } else {
                             System.out.println("conta não existe");
@@ -124,7 +124,7 @@ public class MenuOpcao {
                         break;
                     case 3:
                         app.linhaMenu();
-                        System.out.print("Informe o cpf da conta destino: ");
+                        System.out.print("\nInforme o cpf da conta destino: ");
                         String cpfDestino = menu.myObj.next();
                         Conta contaDestino = Conta.mapaContas.get(cpfDestino);
                         if (contaDestino != null) {
@@ -135,6 +135,7 @@ public class MenuOpcao {
                                 System.out.print("\nSaldo atual de " + conta.getTitular() + " ");
                                 conta.getSaldo();
                                 menuCliente(pessoa, conta);
+                                LeituraArquivo.escritorTransferencia(conta, valor, "poupanca");
                             }
                         } else {
                             System.out.println("conta não existe");
@@ -213,7 +214,7 @@ public class MenuOpcao {
                             break;
                         case 3:
                             app.linhaMenu();
-                            System.out.print("Informe o cpf da conta destino: ");
+                            System.out.print("\nInforme o cpf da conta destino: ");
                             String cpfDestino = menu.myObj.next();
                             Conta contaDestino = Conta.mapaContas.get(cpfDestino);
                             if (contaDestino != null) {
@@ -224,6 +225,7 @@ public class MenuOpcao {
                                     System.out.print("\nSaldo atual de " + conta.getTitular() + " ");
                                     conta.getSaldo();
                                     menuCliente(pessoa, conta);
+                                    LeituraArquivo.escritorTransferencia(conta, valor, "corrente");
                                 }
                             } else {
                                 System.out.println("conta não existe");
@@ -283,7 +285,7 @@ public class MenuOpcao {
                             break;
                         case 3:
                             app.linhaMenu();
-                            System.out.print("Informe o cpf da conta destino: ");
+                            System.out.print("\nInforme o cpf da conta destino: ");
                             String cpfDestino = menu.myObj.next();
                             Conta contaDestino = Conta.mapaContas.get(cpfDestino);
                             if (contaDestino != null) {
@@ -294,6 +296,7 @@ public class MenuOpcao {
                                     System.out.print("\nSaldo atual de " + conta.getTitular() + " ");
                                     conta.getSaldo();
                                     menuCliente(pessoa, conta);
+                                    LeituraArquivo.escritorTransferencia(conta, valor, "poupanca");
                                 }
                             } else {
                                 System.out.println("conta não existe");
