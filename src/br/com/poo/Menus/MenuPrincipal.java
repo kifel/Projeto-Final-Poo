@@ -112,16 +112,21 @@ public class MenuPrincipal {
             Cliente cliente = (Cliente) Cliente.mapaCliente.get(cpf);
             Conta conta = (Conta) Conta.mapaContas.get(cpf);
 
-            System.out.println(Cliente.mapaCliente.get(cpf));
+            System.out.println(cliente);
+            System.out.println(conta);
 
-            while (cliente == null || !(cliente.getSenha().equals(senha))) {
+            if (cliente == null || !(cliente.getSenha().equals(senha))) {
+                app.limparTela();
+                System.out.println("Informações incorretas");
                 menuLogar();
+            }else {
+                System.out.println("LOGADO COM SUCESSO");
             }
-            System.out.println("LOGADO COM SUCESSO");
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        
+
         myObj.close();
     }
 }
