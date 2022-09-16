@@ -2,29 +2,31 @@ package br.com.poo.menu;
 
 import java.io.IOException;
 
-import br.com.poo.io.LeituraArquivo;
 import br.com.poo.contas.Conta;
 import br.com.poo.contas.ContaPoupanca;
+import br.com.poo.io.LeituraArquivo;
 import br.com.poo.pessoas.Funcionario;
 import br.com.poo.pessoas.Pessoa;
 import br.com.poo.sistemainterno.App;
 
 public class MenuOpcao {
 
-    public void menuPrincipal(Pessoa pessoa, Conta conta, Funcionario funcionario) throws IOException {
+    App app = new App();
+    MenuLogin menu = new MenuLogin();
 
-        App app = new App();
-        MenuPrincipal menu = new MenuPrincipal();
+    public void menuCliente(Pessoa pessoa, Conta conta) throws IOException {
+
         int opcaoOperacao;
 
         try {
+
             if (conta.getTipoConta().equals("CORRENTE")) {
                 app.linhaMenu();
-                System.out.println("\n*            [1]\tSaque                *");
-                System.out.println("*            [2]\tDeposito             *");
-                System.out.println("*            [3]\tTransferência        *");
-                System.out.println("*            [4]\tSaldo                *");
-                System.out.println("*            [5]\tSair                 *");
+                System.out.println("\n*           \t[1]-Saque                   *");
+                System.out.println("*           \t[2]-Deposito                *");
+                System.out.println("*           \t[3]-Transferência           *");
+                System.out.println("*           \t[4]-Saldo                   *");
+                System.out.println("*           \t[5]-Sair                    *");
                 app.linhaMenu();
                 System.out.print("\nDigite a opção desejada: ");
                 opcaoOperacao = menu.myObj.nextInt();
@@ -37,9 +39,9 @@ public class MenuOpcao {
                             LeituraArquivo.escritorSaque(conta, inputValorSaque, "corrente");
 
                             LeituraArquivo.atualizadata(conta);
-                            menuPrincipal(pessoa, conta, funcionario);
+                            menuCliente(pessoa, conta);
                         } else {
-                            menuPrincipal(pessoa, conta, funcionario);
+                            menuCliente(pessoa, conta);
                         }
                         break;
                     case 2:
@@ -47,10 +49,10 @@ public class MenuOpcao {
                         System.out.print("\nDigite o valor que deseja depositar: ");
                         Double inputValorDeposito = menu.myObj.nextDouble();
                         if (conta.depositar(inputValorDeposito)) {
-                            menuPrincipal(pessoa, conta, funcionario);
+                            menuCliente(pessoa, conta);
                             // LeituraArquivo.escritorDeposito(conta, inputValorSaque);
                         } else {
-                            menuPrincipal(pessoa, conta, funcionario);
+                            menuCliente(pessoa, conta);
                         }
                         break;
                     case 3:
@@ -65,16 +67,16 @@ public class MenuOpcao {
                                 System.out.printf("\nValor transferido foi de: R$ %.2f%n", valor);
                                 System.out.print("\nSaldo atual de " + conta.getTitular() + " ");
                                 conta.getSaldo();
-                                menuPrincipal(pessoa, conta, funcionario);
+                                menuCliente(pessoa, conta);
                             }
                         } else {
                             System.out.println("conta não existe");
-                            menuPrincipal(pessoa, conta, funcionario);
+                            menuCliente(pessoa, conta);
                         }
                         break;
                     case 4:
                         System.out.printf("\nSeu saldo é: R$%.2f", conta.getSaldo());
-                        menuPrincipal(pessoa, conta, funcionario);
+                        menuCliente(pessoa, conta);
                         // LeituraArquivo.comprovanteSaldo(conta);
                         break;
                     case 5:
@@ -82,16 +84,16 @@ public class MenuOpcao {
                         break;
                     default:
                         System.out.println("\nOpção inválida!");
-                        menuPrincipal(pessoa, conta, funcionario);
+                        menuCliente(pessoa, conta);
                 }
             } else if (conta.getTipoConta().equals("POUPANCA")) {
                 app.linhaMenu();
-                System.out.println("\n*            [1]\tSaque                *");
-                System.out.println("*            [2]\tDeposito             *");
-                System.out.println("*            [3]\tTransferência        *");
-                System.out.println("*            [4]\tSaldo                *");
-                System.out.println("*            [5]\tRendimento           *");
-                System.out.println("*            [6]\tSair                 *");
+                System.out.println("\n*           \t[1]-Saque                   *");
+                System.out.println("*           \t[2]-Deposito                *");
+                System.out.println("*           \t[3]-Transferência           *");
+                System.out.println("*           \t[4]-Saldo                   *");
+                System.out.println("*           \t[5]-Rendimento              *");
+                System.out.println("*           \t[6]-Sair                    *");
                 app.linhaMenu();
                 System.out.print("\nDigite a opção desejada: ");
                 opcaoOperacao = menu.myObj.nextInt();
@@ -102,9 +104,9 @@ public class MenuOpcao {
                         Double inputValorSaque = menu.myObj.nextDouble();
                         if (conta.sacar(inputValorSaque)) {
                             LeituraArquivo.escritorSaque(conta, inputValorSaque, "poupanca");
-                            menuPrincipal(pessoa, conta, funcionario);
+                            menuCliente(pessoa, conta);
                         } else {
-                            menuPrincipal(pessoa, conta, funcionario);
+                            menuCliente(pessoa, conta);
                         }
                         break;
                     case 2:
@@ -113,9 +115,9 @@ public class MenuOpcao {
                         Double inputValorDeposito = menu.myObj.nextDouble();
                         if (conta.depositar(inputValorDeposito)) {
                             // LeituraArquivo.escritorDeposito(conta, inputValorSaque);
-                            menuPrincipal(pessoa, conta, funcionario);
+                            menuCliente(pessoa, conta);
                         } else {
-                            menuPrincipal(pessoa, conta, funcionario);
+                            menuCliente(pessoa, conta);
                         }
                         break;
                     case 3:
@@ -130,22 +132,22 @@ public class MenuOpcao {
                                 System.out.printf("\nValor transferido foi de: R$ %.2f%n", valor);
                                 System.out.print("\nSaldo atual de " + conta.getTitular() + " ");
                                 conta.getSaldo();
-                                menuPrincipal(pessoa, conta, funcionario);
+                                menuCliente(pessoa, conta);
                             }
                         } else {
                             System.out.println("conta não existe");
-                            menuPrincipal(pessoa, conta, funcionario);
+                            menuCliente(pessoa, conta);
                         }
                         break;
                     case 4:
                         System.out.printf("\nSeu saldo é: R$%.2f", conta.getSaldo());
-                        menuPrincipal(pessoa, conta, funcionario);
+                        menuCliente(pessoa, conta);
                         // LeituraArquivo.comprovanteSaldo(conta);
                         break;
                     case 5:
                         ContaPoupanca contaP = (ContaPoupanca) Conta.mapaContas.get(pessoa.getCpf());
                         contaP.rendimentoPoupanca();
-                        menuPrincipal(pessoa, conta, funcionario);
+                        menuCliente(pessoa, conta);
                         break;
                     case 6:
                         menu.menuInicio();
@@ -155,10 +157,172 @@ public class MenuOpcao {
                 }
             } else {
                 System.out.println("Erro 404");
-                menuPrincipal(pessoa, conta, funcionario);
+                menuCliente(pessoa, conta);
             }
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
+
+    public void menuFuncionarioOp(Pessoa pessoa, Conta conta, Funcionario funcionario) throws IOException {
+
+        int opcaoOperacao;
+        
+        try {
+            if (conta != null) {
+                if (conta.getTipoConta().equals("CORRENTE")) {
+                    app.linhaMenu();
+                    System.out.println("\n*           \t[1]-Saque                   *");
+                    System.out.println("*           \t[2]-Deposito                *");
+                    System.out.println("*           \t[3]-Transferência           *");
+                    System.out.println("*           \t[4]-Saldo                   *");
+                    System.out.println("*           \t[5]-Menu Funcionario        *");
+                    System.out.println("*           \t[6]-Sair                    *");
+                    app.linhaMenu();
+                    System.out.print("\nDigite a opção desejada: ");
+                    opcaoOperacao = menu.myObj.nextInt();
+                    switch (opcaoOperacao) {
+                        case 1:
+                            app.linhaMenu();
+                            System.out.print("\nDigite o valor que deseja sacar: ");
+                            Double inputValorSaque = menu.myObj.nextDouble();
+                            if (conta.sacar(inputValorSaque)) {
+                                LeituraArquivo.escritorSaque(conta, inputValorSaque, "corrente");
+    
+                                LeituraArquivo.atualizadata(conta);
+                                menuCliente(pessoa, conta);
+                            } else {
+                                menuCliente(pessoa, conta);
+                            }
+                            break;
+                        case 2:
+                            app.linhaMenu();
+                            System.out.print("\nDigite o valor que deseja depositar: ");
+                            Double inputValorDeposito = menu.myObj.nextDouble();
+                            if (conta.depositar(inputValorDeposito)) {
+                                menuCliente(pessoa, conta);
+                                // LeituraArquivo.escritorDeposito(conta, inputValorSaque);
+                            } else {
+                                menuCliente(pessoa, conta);
+                            }
+                            break;
+                        case 3:
+                            app.linhaMenu();
+                            System.out.print("Informe o cpf da conta destino: ");
+                            String cpfDestino = menu.myObj.next();
+                            Conta contaDestino = Conta.mapaContas.get(cpfDestino);
+                            if (contaDestino != null) {
+                                System.out.print("Digite o valor que deseja transferir: ");
+                                Double valor = menu.myObj.nextDouble();
+                                if (conta.transferir(valor, contaDestino)) {
+                                    System.out.printf("\nValor transferido foi de: R$ %.2f%n", valor);
+                                    System.out.print("\nSaldo atual de " + conta.getTitular() + " ");
+                                    conta.getSaldo();
+                                    menuCliente(pessoa, conta);
+                                }
+                            } else {
+                                System.out.println("conta não existe");
+                                menuCliente(pessoa, conta);
+                            }
+                            break;
+                        case 4:
+                            System.out.printf("\nSeu saldo é: R$%.2f", conta.getSaldo());
+                            menuCliente(pessoa, conta);
+                            // LeituraArquivo.comprovanteSaldo(conta);
+                            break;
+                        case 5:
+                            //MenuFuncionario();
+                            break;
+                        case 6:
+                            menu.menuInicio();
+                            break;
+                        default:
+                            System.out.println("\nOpção inválida!");
+                            menuCliente(pessoa, conta);
+                    }
+                } else if (conta.getTipoConta().equals("POUPANCA")) {
+                    app.linhaMenu();
+                    System.out.println("\n*           \t[1]-Saque                   *");
+                    System.out.println("*           \t[2]-Deposito                *");
+                    System.out.println("*           \t[3]-Transferência           *");
+                    System.out.println("*           \t[4]-Saldo                   *");
+                    System.out.println("*           \t[5]-Rendimento              *");
+                    System.out.println("*           \t[6]-Menu Funcionario        *");
+                    System.out.println("*           \t[7]-Sair                    *");
+                    app.linhaMenu();
+                    System.out.print("\nDigite a opção desejada: ");
+                    opcaoOperacao = menu.myObj.nextInt();
+                    switch (opcaoOperacao) {
+                        case 1:
+                            app.linhaMenu();
+                            System.out.print("\nDigite o valor que deseja sacar: ");
+                            Double inputValorSaque = menu.myObj.nextDouble();
+                            if (conta.sacar(inputValorSaque)) {
+                                LeituraArquivo.escritorSaque(conta, inputValorSaque, "poupanca");
+                                menuCliente(pessoa, conta);
+                            } else {
+                                menuCliente(pessoa, conta);
+                            }
+                            break;
+                        case 2:
+                            app.linhaMenu();
+                            System.out.print("\nDigite o valor que deseja depositar: ");
+                            Double inputValorDeposito = menu.myObj.nextDouble();
+                            if (conta.depositar(inputValorDeposito)) {
+                                // LeituraArquivo.escritorDeposito(conta, inputValorSaque);
+                                menuCliente(pessoa, conta);
+                            } else {
+                                menuCliente(pessoa, conta);
+                            }
+                            break;
+                        case 3:
+                            app.linhaMenu();
+                            System.out.print("Informe o cpf da conta destino: ");
+                            String cpfDestino = menu.myObj.next();
+                            Conta contaDestino = Conta.mapaContas.get(cpfDestino);
+                            if (contaDestino != null) {
+                                System.out.print("Digite o valor que deseja transferir: ");
+                                Double valor = menu.myObj.nextDouble();
+                                if (conta.transferir(valor, contaDestino)) {
+                                    System.out.printf("\nValor transferido foi de: R$ %.2f%n", valor);
+                                    System.out.print("\nSaldo atual de " + conta.getTitular() + " ");
+                                    conta.getSaldo();
+                                    menuCliente(pessoa, conta);
+                                }
+                            } else {
+                                System.out.println("conta não existe");
+                                menuCliente(pessoa, conta);
+                            }
+                            break;
+                        case 4:
+                            System.out.printf("\nSeu saldo é: R$%.2f", conta.getSaldo());
+                            menuCliente(pessoa, conta);
+                            // LeituraArquivo.comprovanteSaldo(conta);
+                            break;
+                        case 5:
+                            ContaPoupanca contaP = (ContaPoupanca) Conta.mapaContas.get(pessoa.getCpf());
+                            contaP.rendimentoPoupanca();
+                            menuCliente(pessoa, conta);
+                            break;
+                        case 6:
+                            //MenuFuncionario();
+                            break;
+                        case 7:
+                            menu.menuInicio();
+                            break;
+                        default:
+                            System.out.println("\nOpção inválida!");
+                    }
+                } else {
+                    System.out.println("Erro 404");
+                    menuCliente(pessoa, conta);
+                }
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 }
