@@ -3,7 +3,7 @@ package br.com.poo.io;
 // Importing the necessary libraries to use the methods.
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
+//import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -78,32 +78,33 @@ public class LeituraArquivo {
     }
   }
 
-  public static void atualizadata(Conta conta) throws IOException {
-    BufferedWriter buffWrite;
-    BufferedReader buffRead;
-    String arq = "./temp/data.txt";
-    String arqtmp = "./temp/data-tmp";
-
-    try {
-      buffWrite = new BufferedWriter(new FileWriter(arqtmp));
-      buffRead = new BufferedReader(new FileReader(arq));
-      String line;
-
-      while ((line = buffRead.readLine()) != null) {
-        String[] data = line.split(";");
-
-        if (data[7].equalsIgnoreCase(conta.getCpf())) {
-          line = line.replace(data[5], String.valueOf(conta.getSaldo()));
-        }
-        buffWrite.write(line + "\n");
-      }
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-    new File(arq).delete();
-    new File(arqtmp).renameTo(new File(arq));
-  }
-
+  /*
+   * public static void atualizadata(Conta conta) throws IOException {
+   * BufferedWriter buffWrite;
+   * BufferedReader buffRead;
+   * String arq = "./temp/data.txt";
+   * String arqtmp = "./temp/data-tmp";
+   * 
+   * try {
+   * buffWrite = new BufferedWriter(new FileWriter(arqtmp));
+   * buffRead = new BufferedReader(new FileReader(arq));
+   * String line;
+   * 
+   * while ((line = buffRead.readLine()) != null) {
+   * String[] data = line.split(";");
+   * 
+   * if (data[7].equalsIgnoreCase(conta.getCpf())) {
+   * line = line.replace(data[5], String.valueOf(conta.getSaldo()));
+   * }
+   * buffWrite.write(line + "\n");
+   * }
+   * } catch (IOException e) {
+   * e.printStackTrace();
+   * }
+   * new File(arq).delete();
+   * new File(arqtmp).renameTo(new File(arq));
+   * }
+   */
   public static void escritorSaque(Conta conta, double Valor, String tipoConta) throws IOException {
 
     String arq = conta.getTitular() + "_Comprovante_Saque";
@@ -130,6 +131,12 @@ public class LeituraArquivo {
 
       linha = "Valor: R$ " + Valor;
       buffWrite.append(linha + "\n");
+
+      if (tipoConta.equalsIgnoreCase(ContaEnum.CORRENTE.getTipoConta())) {
+        ContaCorrente cp = new ContaCorrente();
+        linha = "Total de taxas: " + (cp.tributarSaque(Valor) - Valor);
+        buffWrite.append(linha + "\n");
+      }
 
       linha = app.data();
       buffWrite.append(linha + "\n");
@@ -174,6 +181,12 @@ public class LeituraArquivo {
       linha = "Valor: R$ " + Valor;
       buffWrite.append(linha + "\n");
 
+      if (tipoConta.equalsIgnoreCase(ContaEnum.CORRENTE.getTipoConta())) {
+        ContaCorrente cp = new ContaCorrente();
+        linha = "Total de taxas: " + (cp.tributarTransferencia(Valor) - Valor);
+        buffWrite.append(linha + "\n");
+      }
+
       linha = app.data();
       buffWrite.append(linha + "\n");
 
@@ -188,4 +201,53 @@ public class LeituraArquivo {
       e.printStackTrace();
     }
   }
+
+  public static void escritorDeposito(Conta conta, double Valor, String tipoConta) throws IOException {
+    String arq = conta.getTitular() + "_Comprovante_Deposito";
+
+    try (BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASIC + arq + EXTENSION))) {
+
+      String linha = "============ deposito ============";
+      buffWrite.append(linha + "\n");
+
+      linha = "Nome: " + conta.getTitular();
+      buffWrite.append(linha + "\n");
+
+      linha = "Agencia: " + conta.getNumeroAgencia();
+      buffWrite.append(linha + "\n");
+      if (tipoConta.equalsIgnoreCase(ContaEnum.CORRENTE.getTipoConta())) {
+        linha = "Conta: corrente";
+        buffWrite.append(linha + "\n");
+      } else if (tipoConta.equalsIgnoreCase(ContaEnum.POUPANCA.getTipoConta())) {
+        linha = "Conta: poupanca";
+        buffWrite.append(linha + "\n");
+      }
+
+      linha = "Numero da Conta: " + conta.getNumeroConta();
+      buffWrite.append(linha + "\n");
+
+      linha = "Valor: R$ " + Valor;
+      buffWrite.append(linha + "\n");
+
+      if (tipoConta.equalsIgnoreCase(ContaEnum.CORRENTE.getTipoConta())) {
+        ContaCorrente cp = new ContaCorrente();
+        linha = "Total de taxas: " + (cp.tributarDeposito(Valor) - Valor);
+        buffWrite.append(linha + "\n");
+      }
+
+      linha = app.data();
+      buffWrite.append(linha + "\n");
+
+      linha = "============= fim do deposito =============";
+      buffWrite.append(linha + "\n");
+
+      buffWrite.close();
+
+    } catch (IOException e) {
+      e.printStackTrace();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
 }
