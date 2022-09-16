@@ -1,4 +1,4 @@
-package br.com.poo.menus;
+package br.com.poo.menu;
 
 import java.io.IOException;
 
