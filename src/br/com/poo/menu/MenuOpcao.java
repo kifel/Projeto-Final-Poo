@@ -33,7 +33,7 @@ public class MenuOpcao {
                         System.out.print("\nDigite o valor que deseja sacar: ");
                         Double inputValorSaque = menu.myObj.nextDouble();
                         if (conta.sacar(inputValorSaque)) {
-                            LeituraArquivo.escritorSaque(conta, inputValorSaque);
+                            LeituraArquivo.escritorSaque(conta, inputValorSaque, "corrente");
                             LeituraArquivo.atualizadata(conta);
                             menuPrincipal(pessoa, conta);
                         } else {
@@ -98,7 +98,7 @@ public class MenuOpcao {
                         System.out.print("\nDigite o valor que deseja sacar: ");
                         Double inputValorSaque = menu.myObj.nextDouble();
                         if (conta.sacar(inputValorSaque)) {
-                            LeituraArquivo.escritorSaque(conta, inputValorSaque);
+                            LeituraArquivo.escritorSaque(conta, inputValorSaque, "poupanca");
                             menuPrincipal(pessoa, conta);
                         } else {
                             menuPrincipal(pessoa, conta);
