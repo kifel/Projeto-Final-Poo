@@ -1,5 +1,8 @@
 package br.com.poo.pessoas;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public abstract class Pessoa {
 
 	protected String nome;
@@ -10,6 +13,8 @@ public abstract class Pessoa {
 	protected String email;
 	protected String dataNascimento;
 	protected String senha;
+
+	public static Map<String, Cliente> mapaPessoas = new HashMap<>();
 
 	public Pessoa() {
 		super();

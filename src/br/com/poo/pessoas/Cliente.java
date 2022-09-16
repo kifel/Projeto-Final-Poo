@@ -1,11 +1,6 @@
 package br.com.poo.pessoas;
-
-import java.util.HashMap;
-import java.util.Map;
-
 public class Cliente extends Pessoa {
 	private int agencia;
-	public static Map<String, Cliente> mapaCliente = new HashMap<>();
 
 	public Cliente() {
 		super();

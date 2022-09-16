@@ -1,10 +1,10 @@
 package br.com.poo.enums;
 
 public enum PessoasEnum {
-	GERENTE("gerente", 1), 
+	GERENTE("gerente", 1),
 	DIRETOR("diretor", 2),
-	PRESIDENTE("presidente",3),
-  CLIENTE("cliente",4),
+	PRESIDENTE("presidente", 3),
+	CLIENTE("cliente", 4),
 	OPERADOR_CAIXA("operador caixa", 5);
 
 	private final Integer idTipoPessoa;
@@ -23,7 +23,4 @@ public enum PessoasEnum {
 		return tipoPessoa;
 	}
 
-
 }
-
-
