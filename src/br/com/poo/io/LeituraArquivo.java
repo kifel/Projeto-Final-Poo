@@ -81,8 +81,8 @@ public class LeituraArquivo {
   public static void atualizadata(Conta conta) {
     BufferedWriter buffWrite;
     BufferedReader buffRead;
-    String arq = "data.txt";
-    String arqtmp = "data-tmp";
+    String arq = "./temp/data.txt";
+    String arqtmp = "./temp/data-tmp";
 
     try {
       buffWrite = new BufferedWriter(new FileWriter(arqtmp));
@@ -92,7 +92,7 @@ public class LeituraArquivo {
       while ((line = buffRead.readLine()) != null) {
         String[] data = line.split(";");
 
-        if (data[7].equalsIgnoreCase(String.valueOf(conta.getCpf()))) {
+        if (data[7].equalsIgnoreCase(conta.getCpf())) {
           line = line.replace(data[5], String.valueOf(conta.getSaldo()));
         }
         buffWrite.write(line + "\n");

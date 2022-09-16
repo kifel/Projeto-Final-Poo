@@ -34,6 +34,7 @@ public class MenuOpcao {
                         Double inputValorSaque = menu.myObj.nextDouble();
                         if (conta.sacar(inputValorSaque)) {
                             LeituraArquivo.escritorSaque(conta, inputValorSaque);
+                            LeituraArquivo.atualizadata(conta);
                             menuPrincipal(pessoa, conta);
                         } else {
                             menuPrincipal(pessoa, conta);
