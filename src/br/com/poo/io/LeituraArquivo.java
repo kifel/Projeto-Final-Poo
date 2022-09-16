@@ -48,6 +48,7 @@ public class LeituraArquivo {
           } else if (data[0].equalsIgnoreCase(PessoasEnum.GERENTE.getTipoPessoa())) {
             Gerente gerente = new Gerente(data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8],
                 Double.parseDouble(data[9]), data[0], Integer.parseInt(data[10]));
+            Gerente.mapaGerente.put(data[4], gerente);
             Funcionario.mapaFuncionario.put(data[4], gerente);
             Funcionario.ordenaFuncionario.put(data[1], gerente);
           } else if (data[0].equalsIgnoreCase(PessoasEnum.DIRETOR.getTipoPessoa())) {
@@ -250,4 +251,28 @@ public class LeituraArquivo {
     }
   }
 
+  public static int escritorContaAgencia(String path, int Agencia) throws IOException {
+    BufferedReader buffRead = new BufferedReader(new FileReader(PATH_BASIC + path + EXTENSION));
+    String line = "";
+    int cont = 0;
+
+    while (true) {
+      line = buffRead.readLine();
+      if (line != null) {
+        String[] data = line.split(";");
+        if (data[0].equalsIgnoreCase(PessoasEnum.CLIENTE.getTipoPessoa())) {
+          if (Integer.parseInt(data[3]) == Agencia) {
+            cont++;
+          }
+
+        } else {
+          break;
+        }
+      }
+
+    }
+    buffRead.close();
+    return cont;
+
+  }
 }

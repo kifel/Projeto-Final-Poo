@@ -3,7 +3,9 @@ package br.com.poo.menu;
 import java.io.IOException;
 
 import br.com.poo.contas.Conta;
+import br.com.poo.io.LeituraArquivo;
 import br.com.poo.pessoas.Funcionario;
+import br.com.poo.pessoas.Gerente;
 import br.com.poo.pessoas.Pessoa;
 import br.com.poo.sistemainterno.App;
 
@@ -12,6 +14,7 @@ public class MenuOpecaoFuncionario {
     App app = new App();
     MenuLogin menu = new MenuLogin();
     MenuOpcao menuOp = new MenuOpcao();
+    Gerente gerente = new Gerente();
 
     public void menuFuncionario(Pessoa pessoa, Conta conta, Funcionario funcionario) throws IOException {
 
@@ -27,6 +30,13 @@ public class MenuOpecaoFuncionario {
                 opcaoOperacao = menu.myObj.nextInt();
                 switch (opcaoOperacao) {
                     case 1:
+                        String cpf = funcionario.getCpf();
+                        Gerente gerente = (Gerente) Gerente.mapaGerente.get(cpf);
+                        app.limparTela();
+                        app.linhaMenu();
+                        System.out.println("\n O total de contas na agência " + gerente.getIdAgencia()
+                                + " são: " + LeituraArquivo.escritorContaAgencia("data", gerente.getIdAgencia()));
+                        menuFuncionario(pessoa, conta, funcionario);
                         break;
                     case 2:
                         if (conta == null) {
@@ -50,6 +60,7 @@ public class MenuOpecaoFuncionario {
                 opcaoOperacao = menu.myObj.nextInt();
                 switch (opcaoOperacao) {
                     case 1:
+                        System.out.println(LeituraArquivo.escritorContaAgencia("data", gerente.getIdAgencia()));
                         break;
                     case 2:
                         break;
@@ -75,6 +86,7 @@ public class MenuOpecaoFuncionario {
                 opcaoOperacao = menu.myObj.nextInt();
                 switch (opcaoOperacao) {
                     case 1:
+                        System.out.println(LeituraArquivo.escritorContaAgencia("data", gerente.getIdAgencia()));
                         break;
                     case 2:
                         break;
