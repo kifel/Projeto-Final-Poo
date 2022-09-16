@@ -39,7 +39,7 @@ public class MenuOpcao {
                         if (conta.sacar(inputValorSaque)) {
                             LeituraArquivo.escritorSaque(conta, inputValorSaque, "corrente");
 
-                            LeituraArquivo.atualizadata(conta);
+                            // LeituraArquivo.atualizadata(conta);
                             menuCliente(pessoa, conta);
                         } else {
                             menuCliente(pessoa, conta);
@@ -50,6 +50,7 @@ public class MenuOpcao {
                         System.out.print("\nDigite o valor que deseja depositar: ");
                         Double inputValorDeposito = menu.myObj.nextDouble();
                         if (conta.depositar(inputValorDeposito)) {
+                            LeituraArquivo.escritorDeposito(conta, inputValorDeposito, "corrente");
                             menuCliente(pessoa, conta);
                         } else {
                             menuCliente(pessoa, conta);
@@ -117,7 +118,7 @@ public class MenuOpcao {
                         System.out.print("\nDigite o valor que deseja depositar: ");
                         Double inputValorDeposito = menu.myObj.nextDouble();
                         if (conta.depositar(inputValorDeposito)) {
-                            // LeituraArquivo.escritorDeposito(conta, inputValorSaque);
+                            LeituraArquivo.escritorDeposito(conta, inputValorDeposito, "poupanca");
                             menuCliente(pessoa, conta);
                         } else {
                             menuCliente(pessoa, conta);
@@ -196,7 +197,7 @@ public class MenuOpcao {
                             if (conta.sacar(inputValorSaque)) {
                                 LeituraArquivo.escritorSaque(conta, inputValorSaque, "corrente");
 
-                                LeituraArquivo.atualizadata(conta);
+                                // LeituraArquivo.atualizadata(conta);
                                 menuCliente(pessoa, conta);
                             } else {
                                 menuCliente(pessoa, conta);
@@ -207,8 +208,8 @@ public class MenuOpcao {
                             System.out.print("\nDigite o valor que deseja depositar: ");
                             Double inputValorDeposito = menu.myObj.nextDouble();
                             if (conta.depositar(inputValorDeposito)) {
+                                LeituraArquivo.escritorDeposito(conta, inputValorDeposito, "corrente");
                                 menuCliente(pessoa, conta);
-                                // LeituraArquivo.escritorDeposito(conta, inputValorSaque);
                             } else {
                                 menuCliente(pessoa, conta);
                             }
@@ -278,7 +279,7 @@ public class MenuOpcao {
                             System.out.print("\nDigite o valor que deseja depositar: ");
                             Double inputValorDeposito = menu.myObj.nextDouble();
                             if (conta.depositar(inputValorDeposito)) {
-                                // LeituraArquivo.escritorDeposito(conta, inputValorSaque);
+                                LeituraArquivo.escritorDeposito(conta, inputValorDeposito, "poupanca");
                                 menuCliente(pessoa, conta);
                             } else {
                                 menuCliente(pessoa, conta);
