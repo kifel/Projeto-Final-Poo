@@ -5,12 +5,13 @@ import java.io.IOException;
 import br.com.poo.io.LeituraArquivo;
 import br.com.poo.contas.Conta;
 import br.com.poo.contas.ContaPoupanca;
+import br.com.poo.pessoas.Funcionario;
 import br.com.poo.pessoas.Pessoa;
 import br.com.poo.sistemainterno.App;
 
 public class MenuOpcao {
 
-    public void menuPrincipal(Pessoa pessoa, Conta conta) throws IOException {
+    public void menuPrincipal(Pessoa pessoa, Conta conta, Funcionario funcionario) throws IOException {
 
         App app = new App();
         MenuPrincipal menu = new MenuPrincipal();
@@ -36,9 +37,9 @@ public class MenuOpcao {
                             LeituraArquivo.escritorSaque(conta, inputValorSaque, "corrente");
 
                             LeituraArquivo.atualizadata(conta);
-                            menuPrincipal(pessoa, conta);
+                            menuPrincipal(pessoa, conta, funcionario);
                         } else {
-                            menuPrincipal(pessoa, conta);
+                            menuPrincipal(pessoa, conta, funcionario);
                         }
                         break;
                     case 2:
@@ -46,10 +47,10 @@ public class MenuOpcao {
                         System.out.print("\nDigite o valor que deseja depositar: ");
                         Double inputValorDeposito = menu.myObj.nextDouble();
                         if (conta.depositar(inputValorDeposito)) {
-                            menuPrincipal(pessoa, conta);
+                            menuPrincipal(pessoa, conta, funcionario);
                             // LeituraArquivo.escritorDeposito(conta, inputValorSaque);
                         } else {
-                            menuPrincipal(pessoa, conta);
+                            menuPrincipal(pessoa, conta, funcionario);
                         }
                         break;
                     case 3:
@@ -64,16 +65,16 @@ public class MenuOpcao {
                                 System.out.printf("\nValor transferido foi de: R$ %.2f%n", valor);
                                 System.out.print("\nSaldo atual de " + conta.getTitular() + " ");
                                 conta.getSaldo();
-                                menuPrincipal(pessoa, conta);
+                                menuPrincipal(pessoa, conta, funcionario);
                             }
                         } else {
                             System.out.println("conta não existe");
-                            menuPrincipal(pessoa, conta);
+                            menuPrincipal(pessoa, conta, funcionario);
                         }
                         break;
                     case 4:
                         System.out.printf("\nSeu saldo é: R$%.2f", conta.getSaldo());
-                        menuPrincipal(pessoa, conta);
+                        menuPrincipal(pessoa, conta, funcionario);
                         // LeituraArquivo.comprovanteSaldo(conta);
                         break;
                     case 5:
@@ -81,6 +82,7 @@ public class MenuOpcao {
                         break;
                     default:
                         System.out.println("\nOpção inválida!");
+                        menuPrincipal(pessoa, conta, funcionario);
                 }
             } else if (conta.getTipoConta().equals("POUPANCA")) {
                 app.linhaMenu();
@@ -100,9 +102,9 @@ public class MenuOpcao {
                         Double inputValorSaque = menu.myObj.nextDouble();
                         if (conta.sacar(inputValorSaque)) {
                             LeituraArquivo.escritorSaque(conta, inputValorSaque, "poupanca");
-                            menuPrincipal(pessoa, conta);
+                            menuPrincipal(pessoa, conta, funcionario);
                         } else {
-                            menuPrincipal(pessoa, conta);
+                            menuPrincipal(pessoa, conta, funcionario);
                         }
                         break;
                     case 2:
@@ -111,9 +113,9 @@ public class MenuOpcao {
                         Double inputValorDeposito = menu.myObj.nextDouble();
                         if (conta.depositar(inputValorDeposito)) {
                             // LeituraArquivo.escritorDeposito(conta, inputValorSaque);
-                            menuPrincipal(pessoa, conta);
+                            menuPrincipal(pessoa, conta, funcionario);
                         } else {
-                            menuPrincipal(pessoa, conta);
+                            menuPrincipal(pessoa, conta, funcionario);
                         }
                         break;
                     case 3:
@@ -128,22 +130,22 @@ public class MenuOpcao {
                                 System.out.printf("\nValor transferido foi de: R$ %.2f%n", valor);
                                 System.out.print("\nSaldo atual de " + conta.getTitular() + " ");
                                 conta.getSaldo();
-                                menuPrincipal(pessoa, conta);
+                                menuPrincipal(pessoa, conta, funcionario);
                             }
                         } else {
                             System.out.println("conta não existe");
-                            menuPrincipal(pessoa, conta);
+                            menuPrincipal(pessoa, conta, funcionario);
                         }
                         break;
                     case 4:
                         System.out.printf("\nSeu saldo é: R$%.2f", conta.getSaldo());
-                        menuPrincipal(pessoa, conta);
+                        menuPrincipal(pessoa, conta, funcionario);
                         // LeituraArquivo.comprovanteSaldo(conta);
                         break;
                     case 5:
                         ContaPoupanca contaP = (ContaPoupanca) Conta.mapaContas.get(pessoa.getCpf());
                         contaP.rendimentoPoupanca();
-                        menuPrincipal(pessoa, conta);
+                        menuPrincipal(pessoa, conta, funcionario);
                         break;
                     case 6:
                         menu.menuInicio();
@@ -153,6 +155,7 @@ public class MenuOpcao {
                 }
             } else {
                 System.out.println("Erro 404");
+                menuPrincipal(pessoa, conta, funcionario);
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
