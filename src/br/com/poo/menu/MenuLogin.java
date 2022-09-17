@@ -93,7 +93,7 @@ public class MenuLogin {
         try {
             if (funcionario != null) {
                 app.limparTela();
-                System.out.println("Bem-vindo(a) ao seu trabalho, " + funcionario.getNome() + "!\n");
+                System.out.println("Bem-vindo(a) ao seu Banco, " + funcionario.getNome() + "!\n");
                 System.out.println("Você tem a função de " + funcionario.getTipoPessoa() + "!\n");
                 System.out.println("Escolha uma opção");
             } else {

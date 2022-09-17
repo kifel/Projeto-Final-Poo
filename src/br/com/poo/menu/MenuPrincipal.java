@@ -16,7 +16,6 @@ public class MenuPrincipal {
             if (funcionario == null) {
                 menuOp.menuCliente(pessoa, conta);
             } else {
-                System.out.println("FUNCIONARIO");
                 menuOp.menuFuncionarioOp(pessoa, conta, funcionario);
             }
 

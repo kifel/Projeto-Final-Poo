@@ -28,12 +28,12 @@ public class ContaCorrente extends Conta implements Tributo {
 	public double tributarSaque(double valor) {
 		return valor + Tributo.SAQUE;
 	}
-		
+
 	@Override
 	public double tributarDeposito(double valor) {
 		return 0;
 	}
-	
+
 	@Override
 	public double tributarTransferencia(double valor) {
 		return 0;
@@ -45,13 +45,9 @@ public class ContaCorrente extends Conta implements Tributo {
 		if (valor < 0) {
 			System.out.println("O valor digitado para saque é inválido!");
 			return false;
-		}else 
-		if (this.saldo - valorTributado >= 0) {
+		} else if (this.saldo - valorTributado >= 0) {
 			this.saldo -= valorTributado;
 			this.taxas += Tributo.SAQUE;
-			System.out.println("\nOperação realizada com sucesso!\n");
-			System.out.printf("\nValor sacado: R$%.2f", valor, "\n");
-			System.out.printf("\nSaldo atual: R$%.2f", this.saldo, "\n");
 			++totalSaques;
 			return true;
 		} else {
@@ -70,7 +66,6 @@ public class ContaCorrente extends Conta implements Tributo {
 			this.taxas += valorTributado;
 			System.out.println("\nOperação realizada com sucesso!\n");
 			System.out.printf("\nValor depositado: R$%.2f", valor, "\n");
-			System.out.printf("\nSaldo atual: R$%.2f", this.saldo, "\n");
 			return true;
 		}
 	}
@@ -80,11 +75,9 @@ public class ContaCorrente extends Conta implements Tributo {
 		double valorTributado = tributarTransferencia(valor);
 		if (this.saldo >= valorTributado) {
 			nomeConta.saldo = nomeConta.saldo + valor;
-			this.saldo -= valorTributado;
+			sacar(valor + valorTributado);
 			this.taxas += valorTributado;
 			System.out.println("\nOperação realizada com sucesso!\n");
-			System.out.printf("\nValor Transferido de : R$%.2f", valor, "\n");
-			System.out.printf("\nSaldo atual: R$%.2f", this.saldo, "\n");
 			return true;
 
 		} else {
