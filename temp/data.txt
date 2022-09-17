@@ -8,8 +8,8 @@ CLIENTE;POUPANCA;Luiz;154;74623;1900.50;30/07/2015 as 05:27 pm;222;luiz@webtvbra
 CLIENTE;POUPANCA;Tatiana;321;84576;2000.0;15/09/1997 as 06:45 am;429;tatiana@webtvbrasileira.com;12345;Feminino;21987542136;Casado;21/08/1978
 CLIENTE;POUPANCA;Marcelo;456;58746;5000.0;04/04/1984 as 06:15 pm;842;marcelo@webtvbrasileira.com;12345;Masculino;2198745698;Casado;31/12/1968
 CLIENTE;POUPANCA;Sabrina;255;74301;7000.0;15/09/2022 as 02:55 pm;369;sabrina@gmail.com;12345;Feminino;2225874963;solteiro;07/08/1994
-OPRADORCAIXA;Lucas;Masculino;Solteiro;15948;21584585;lucas@google.com.16/09/1975;12345;5000.0;154
-OPRADORCAIXA;Claudia;feminino;Casado;4541;226548489;claudiarfd@gmail.com;18/10/1989;12345;5000.0;253
+OPRADOR_CAIXA;Lucas;Masculino;Solteiro;15948;21584585;lucas@google.com.16/09/1975;12345;5000.0;154
+OPRADOR_CAIXA;Claudia;feminino;Casado;4541;226548489;claudiarfd@gmail.com;18/10/1989;12345;5000.0;253
 GERENTE;Gabriel;Masculino;Casado;111;229815662;gabriel@gmail.com;12/09/1945;12345;10000.0;154
 GERENTE;Carlos;Masculino;Casado;5894;2198989898;carlos@gmail.com;12/08/1998;12345;10000.0;456
 GERENTE;Paulo;Masculino;Casado;9658;229876421;paulo@hotmail.com.br;05/09/1975;12345;10000.0;255
