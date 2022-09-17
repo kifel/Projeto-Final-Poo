@@ -64,7 +64,8 @@ public class MenuOpecaoFuncionario {
                 opcaoOperacao = menu.myObj.nextInt();
                 switch (opcaoOperacao) {
                     case 1:
-
+                        System.out.println("Em manutenção");
+                        menuFuncionario(pessoa, conta, funcionario);
                         break;
                     case 2:
                         app.limparTela();
@@ -100,7 +101,8 @@ public class MenuOpecaoFuncionario {
                 opcaoOperacao = menu.myObj.nextInt();
                 switch (opcaoOperacao) {
                     case 1:
-                        System.out.println(LeituraArquivo.escritorContaAgencia("data", gerente.getIdAgencia()));
+                        System.out.println("Em manutenção");
+                        menuFuncionario(pessoa, conta, funcionario);
                         break;
                     case 2:
                         app.limparTela();

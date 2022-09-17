@@ -14,6 +14,12 @@ public class MenuLogin {
     String choice;
     Scanner myObj = new Scanner(System.in);
 
+    public void logoInicio () {
+        app.logoBanco();
+        System.out.println("\n");
+        menuInicio();
+    }
+
     public void menuInicio() {
 
         app.linhaMenu();
@@ -29,7 +35,9 @@ public class MenuLogin {
                 break;
             case "2":
                 app.limparTela();
-                System.out.println("Saindo do sistema, tenha um bom dia");
+                System.out.println("\n");
+                app.logoBanco();
+                System.out.println("Saindo do Tree Bank, tenha um bom dia");
                 break;
             default:
                 app.limparTela();
@@ -80,6 +88,7 @@ public class MenuLogin {
                 app.limparTela();
                 System.out.println("Bem-vindo(a) ao seu trabalho, " + funcionario.getNome() + "!\n");
                 System.out.println("Você tem a função de " + funcionario.getTipoPessoa() + "!\n");
+                System.out.println("Escolha uma opção");
             } else {
                 app.limparTela();
                 System.out.println("Bem-vindo(a) ao seu Banco, " + pessoa.getNome() + "!\n");
