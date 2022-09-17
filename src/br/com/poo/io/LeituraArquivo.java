@@ -185,7 +185,6 @@ public class LeituraArquivo {
       buffWrite.append(linha + "\n");
 
       if (tipoConta.equalsIgnoreCase(ContaEnum.CORRENTE.getTipoConta())) {
-        ContaCorrente cp = new ContaCorrente();
         linha = "Total de taxas: " + 0.2;
         buffWrite.append(linha + "\n");
       }
@@ -233,7 +232,6 @@ public class LeituraArquivo {
       buffWrite.append(linha + "\n");
 
       if (tipoConta.equalsIgnoreCase(ContaEnum.CORRENTE.getTipoConta())) {
-        ContaCorrente cp = new ContaCorrente();
         linha = "Total de taxas: " + (0.1);
         buffWrite.append(linha + "\n");
       }

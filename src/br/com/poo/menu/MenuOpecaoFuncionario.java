@@ -22,7 +22,7 @@ public class MenuOpecaoFuncionario {
 
     public void menuFuncionario(Pessoa pessoa, Conta conta, Funcionario funcionario) throws IOException {
 
-        int opcaoOperacao;
+        String opcaoOperacao;
 
         try {
             if (funcionario.getTipoPessoa().equals("GERENTE")) {
@@ -31,9 +31,9 @@ public class MenuOpecaoFuncionario {
                 System.out.println("*           \t[2]- Sair                   *");
                 app.linhaMenu();
                 System.out.print("\nDigite a opção desejada: ");
-                opcaoOperacao = menu.myObj.nextInt();
+                opcaoOperacao = menu.myObj.next();
                 switch (opcaoOperacao) {
-                    case 1:
+                    case "1":
                         String cpf = funcionario.getCpf();
                         Gerente gerente = (Gerente) Gerente.mapaGerente.get(cpf);
                         app.limparTela();
@@ -42,7 +42,7 @@ public class MenuOpecaoFuncionario {
                                 + " são: " + LeituraArquivo.escritorContaAgencia("data", gerente.getIdAgencia()));
                         menuFuncionario(pessoa, conta, funcionario);
                         break;
-                    case 2:
+                    case "2":
                         if (conta == null) {
                             menu.menuInicio();
                         } else {
@@ -61,13 +61,13 @@ public class MenuOpecaoFuncionario {
                 System.out.println("*           \t[3]- Sair                   *");
                 app.linhaMenu();
                 System.out.print("\nDigite a opção desejada: ");
-                opcaoOperacao = menu.myObj.nextInt();
+                opcaoOperacao = menu.myObj.next();
                 switch (opcaoOperacao) {
-                    case 1:
+                    case "1":
                         System.out.println("Em manutenção");
                         menuFuncionario(pessoa, conta, funcionario);
                         break;
-                    case 2:
+                    case "2":
                         app.limparTela();
                         System.out.println("Contas cadastradas no banco");
                         List<Cliente> listaCliente = new ArrayList<Cliente>(Cliente.mapaCliente.values());
@@ -79,7 +79,7 @@ public class MenuOpecaoFuncionario {
                         }
                         menuFuncionario(pessoa, conta, funcionario);
                         break;
-                    case 3:
+                    case "3":
                         if (conta == null) {
                             menu.menuInicio();
                         } else {
@@ -98,13 +98,13 @@ public class MenuOpecaoFuncionario {
                 System.out.println("*           \t[4]- Sair                   *");
                 app.linhaMenu();
                 System.out.print("\nDigite a opção desejada: ");
-                opcaoOperacao = menu.myObj.nextInt();
+                opcaoOperacao = menu.myObj.next();
                 switch (opcaoOperacao) {
-                    case 1:
+                    case "1":
                         System.out.println("Em manutenção");
                         menuFuncionario(pessoa, conta, funcionario);
                         break;
-                    case 2:
+                    case "2":
                         app.limparTela();
                         System.out.println("Contas cadastradas no banco");
                         List<Cliente> listaCliente = new ArrayList<Cliente>(Cliente.mapaCliente.values());
@@ -116,7 +116,7 @@ public class MenuOpecaoFuncionario {
                         }
                         menuFuncionario(pessoa, conta, funcionario);
                         break;
-                    case 3:
+                    case "3":
                         app.limparTela();
                         double total = 0;
                         for (Conta c : Conta.mapaContas.values()) {
@@ -127,7 +127,7 @@ public class MenuOpecaoFuncionario {
                         System.out.println();
                         menuFuncionario(pessoa, conta, funcionario);
                         break;
-                    case 4:
+                    case "4":
                         if (conta == null) {
                             menu.menuInicio();
                         } else {

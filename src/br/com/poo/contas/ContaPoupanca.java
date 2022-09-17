@@ -25,8 +25,8 @@ public class ContaPoupanca extends Conta {
             return false;
         } else {
             System.out.println("\nOperação realizada com sucesso!\n");
-			System.out.printf("\nValor sacado: R$%.2f", valor, "\n");
-			System.out.printf("\nSaldo atual: R$%.2f", this.saldo, "\n");
+            System.out.printf("\nValor sacado: R$%.2f", valor, "\n");
+            System.out.printf("\nSaldo atual: R$%.2f", this.saldo, "\n");
             this.saldo -= valor;
             return true;
         }
@@ -39,8 +39,8 @@ public class ContaPoupanca extends Conta {
         } else {
             this.saldo += valor;
             System.out.println("\nOperação realizada com sucesso!\n");
-			System.out.printf("\nValor depositado: R$%.2f", valor, "\n");
-			System.out.printf("\nSaldo atual: R$%.2f", this.saldo, "\n");
+            System.out.printf("\nValor depositado: R$%.2f", valor, "\n");
+            System.out.printf("\nSaldo atual: R$%.2f", this.saldo, "\n");
             return true;
         }
     }
@@ -54,8 +54,8 @@ public class ContaPoupanca extends Conta {
         } else {
             nomeConta.depositar(valor);
             System.out.println("\nOperação realizada com sucesso!\n");
-			System.out.printf("\nValor Transferido de : R$%.2f", valor, "\n");
-			System.out.printf("\nSaldo atual: R$%.2f", this.saldo, "\n");
+            System.out.printf("\nValor Transferido de : R$%.2f", valor, "\n");
+            System.out.printf("\nSaldo atual: R$%.2f", this.saldo, "\n");
             return true;
         }
     }
@@ -76,12 +76,11 @@ public class ContaPoupanca extends Conta {
         System.out.printf("\n R$ %.2f", (valor + rendimentoPoupanca));
         System.out.println();
 
-        myObj.close();
     }
 
     @Override
-	public String toString() {
-		return "Conta Poupança\tNúmero da Agência = " + this.numeroAgencia + "\tNúmero da Conta = "
-				+ this.numeroConta + "\tSaldo = " + this.saldo + "\tCPF = " + this.cpf + "\n";
-	}
+    public String toString() {
+        return "Conta Poupança\tNúmero da Agência = " + this.numeroAgencia + "\tNúmero da Conta = "
+                + this.numeroConta + "\tSaldo = " + this.saldo + "\tCPF = " + this.cpf + "\n";
+    }
 }

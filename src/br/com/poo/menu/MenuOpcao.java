@@ -16,7 +16,7 @@ public class MenuOpcao {
 
     public void menuCliente(Pessoa pessoa, Conta conta) throws IOException {
 
-        int opcaoOperacao;
+        String opcaoOperacao;
 
         try {
 
@@ -30,9 +30,9 @@ public class MenuOpcao {
                 System.out.println("*           \t[5]-Sair                    *");
                 app.linhaMenu();
                 System.out.print("\nDigite a opção desejada: ");
-                opcaoOperacao = menu.myObj.nextInt();
+                opcaoOperacao = menu.myObj.next();
                 switch (opcaoOperacao) {
-                    case 1:
+                    case "1":
                         app.limparTela();
                         app.linhaMenu();
                         System.out.print("\nDigite o valor que deseja sacar: ");
@@ -44,7 +44,7 @@ public class MenuOpcao {
                             menuCliente(pessoa, conta);
                         }
                         break;
-                    case 2:
+                    case "2":
                         app.limparTela();
                         app.linhaMenu();
                         System.out.print("\nDigite o valor que deseja depositar: ");
@@ -56,7 +56,7 @@ public class MenuOpcao {
                             menuCliente(pessoa, conta);
                         }
                         break;
-                    case 3:
+                    case "3":
                         app.limparTela();
                         app.linhaMenu();
                         System.out.print("\nInforme o cpf da conta destino: ");
@@ -78,12 +78,12 @@ public class MenuOpcao {
                             menuCliente(pessoa, conta);
                         }
                         break;
-                    case 4:
+                    case "4":
                         app.limparTela();
                         System.out.printf("\nSeu saldo é: R$%.2f", conta.getSaldo());
                         menuCliente(pessoa, conta);
                         break;
-                    case 5:
+                    case "5":
                         app.limparTela();
                         menu.logoInicio();
                         break;
@@ -102,9 +102,9 @@ public class MenuOpcao {
                 System.out.println("*           \t[6]-Sair                    *");
                 app.linhaMenu();
                 System.out.print("\nDigite a opção desejada: ");
-                opcaoOperacao = menu.myObj.nextInt();
+                opcaoOperacao = menu.myObj.next();
                 switch (opcaoOperacao) {
-                    case 1:
+                    case "1":
                         app.limparTela();
                         app.linhaMenu();
                         System.out.print("\nDigite o valor que deseja sacar: ");
@@ -116,7 +116,7 @@ public class MenuOpcao {
                             menuCliente(pessoa, conta);
                         }
                         break;
-                    case 2:
+                    case "2":
                         app.limparTela();
                         app.linhaMenu();
                         System.out.print("\nDigite o valor que deseja depositar: ");
@@ -128,7 +128,7 @@ public class MenuOpcao {
                             menuCliente(pessoa, conta);
                         }
                         break;
-                    case 3:
+                    case "3":
                         app.limparTela();
                         app.linhaMenu();
                         System.out.print("\nInforme o cpf da conta destino: ");
@@ -149,18 +149,18 @@ public class MenuOpcao {
                             menuCliente(pessoa, conta);
                         }
                         break;
-                    case 4:
+                    case "4":
                         app.limparTela();
                         System.out.printf("\nSeu saldo é: R$%.2f", conta.getSaldo());
                         menuCliente(pessoa, conta);
                         break;
-                    case 5:
+                    case "5":
                         app.limparTela();
                         ContaPoupanca contaP = (ContaPoupanca) Conta.mapaContas.get(pessoa.getCpf());
                         contaP.rendimentoPoupanca();
                         menuCliente(pessoa, conta);
                         break;
-                    case 6:
+                    case "6":
                         app.limparTela();
                         menu.logoInicio();
                         break;
@@ -181,7 +181,7 @@ public class MenuOpcao {
 
     public void menuFuncionarioOp(Pessoa pessoa, Conta conta, Funcionario funcionario) throws IOException {
 
-        int opcaoOperacao;
+        String opcaoOperacao;
 
         try {
             MenuOpecaoFuncionario menuF = new MenuOpecaoFuncionario();
@@ -197,9 +197,9 @@ public class MenuOpcao {
                     System.out.println("*           \t[6]-Sair                    *");
                     app.linhaMenu();
                     System.out.print("\nDigite a opção desejada: ");
-                    opcaoOperacao = menu.myObj.nextInt();
+                    opcaoOperacao = menu.myObj.next();
                     switch (opcaoOperacao) {
-                        case 1:
+                        case "1":
                             app.limparTela();
                             app.linhaMenu();
                             System.out.print("\nDigite o valor que deseja sacar: ");
@@ -211,7 +211,7 @@ public class MenuOpcao {
                                 menuFuncionarioOp(pessoa, conta, funcionario);
                             }
                             break;
-                        case 2:
+                        case "2":
                             app.limparTela();
                             app.linhaMenu();
                             System.out.print("\nDigite o valor que deseja depositar: ");
@@ -223,7 +223,7 @@ public class MenuOpcao {
                                 menuFuncionarioOp(pessoa, conta, funcionario);
                             }
                             break;
-                        case 3:
+                        case "3":
                             app.limparTela();
                             app.linhaMenu();
                             System.out.print("\nInforme o cpf da conta destino: ");
@@ -244,16 +244,16 @@ public class MenuOpcao {
                                 menuFuncionarioOp(pessoa, conta, funcionario);
                             }
                             break;
-                        case 4:
+                        case "4":
                             app.limparTela();
                             System.out.printf("\nSeu saldo é: R$%.2f", conta.getSaldo());
                             menuFuncionarioOp(pessoa, conta, funcionario);
                             break;
-                        case 5:
+                        case "5":
                             app.limparTela();
                             menuF.menuFuncionario(pessoa, conta, funcionario);
                             break;
-                        case 6:
+                        case "6":
                             app.limparTela();
                             menu.logoInicio();
                             break;
@@ -273,9 +273,9 @@ public class MenuOpcao {
                     System.out.println("*           \t[7]-Sair                    *");
                     app.linhaMenu();
                     System.out.print("\nDigite a opção desejada: ");
-                    opcaoOperacao = menu.myObj.nextInt();
+                    opcaoOperacao = menu.myObj.next();
                     switch (opcaoOperacao) {
-                        case 1:
+                        case "1":
                             app.limparTela();
                             app.linhaMenu();
                             System.out.print("\nDigite o valor que deseja sacar: ");
@@ -289,7 +289,7 @@ public class MenuOpcao {
                                 menuFuncionarioOp(pessoa, conta, funcionario);
                             }
                             break;
-                        case 2:
+                        case "2":
                             app.limparTela();
                             app.linhaMenu();
                             System.out.print("\nDigite o valor que deseja depositar: ");
@@ -303,7 +303,7 @@ public class MenuOpcao {
                                 menuFuncionarioOp(pessoa, conta, funcionario);
                             }
                             break;
-                        case 3:
+                        case "3":
                             app.limparTela();
                             app.linhaMenu();
                             System.out.print("\nInforme o cpf da conta destino: ");
@@ -328,22 +328,22 @@ public class MenuOpcao {
                                 menuFuncionarioOp(pessoa, conta, funcionario);
                             }
                             break;
-                        case 4:
+                        case "4":
                             app.limparTela();
                             System.out.printf("\nSeu saldo é: R$%.2f", conta.getSaldo());
                             menuFuncionarioOp(pessoa, conta, funcionario);
                             break;
-                        case 5:
+                        case "5":
                             app.limparTela();
                             ContaPoupanca contaP = (ContaPoupanca) Conta.mapaContas.get(pessoa.getCpf());
                             contaP.rendimentoPoupanca();
                             menuFuncionarioOp(pessoa, conta, funcionario);
                             break;
-                        case 6:
+                        case "6":
                             app.limparTela();
                             menuF.menuFuncionario(pessoa, conta, funcionario);
                             break;
-                        case 7:
+                        case "7":
                             app.limparTela();
                             menu.logoInicio();
                             break;
