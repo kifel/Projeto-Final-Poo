@@ -78,7 +78,6 @@ public class ContaCorrente extends Conta implements Tributo {
 		double valorTributado = tributarTransferencia(valor);
 		if (this.saldo >= valorTributado) {
 			nomeConta.saldo = nomeConta.saldo + valor;
-			System.out.println(valorTributado);
 			this.saldo -= valorTributado;
 			this.taxas += Tributo.TRANSFERENCIA;
 			System.out.println(taxas);
