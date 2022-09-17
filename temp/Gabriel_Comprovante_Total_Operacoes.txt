@@ -1,0 +1,11 @@
+============ total de operacoes ============
+Nome: Gabriel
+Agencia: 154
+Conta: corrente
+Valor total de gastos de saque: R$ 0
+Valor total de gastos de depositos: R$ 0
+Valor total de gastos de transferencias: R$ 0
+Numero da Conta: 5646
+Total de taxas: 0.0
+17/09/2022 as 11:00:12 AM
+============= fim do total de operacoes =============

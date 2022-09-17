@@ -67,11 +67,11 @@ public class MenuOpcao {
                             Double valor = menu.myObj.nextDouble();
                             if (conta.transferir(valor, contaDestino)) {
                                 System.out.printf("\nValor transferido foi de: R$ %.2f%n", valor);
-                                System.out.print("\nSaldo atual de " + conta.getTitular() + " ");
+                                System.out.print("\nConsulte seu saldo.");
                                 conta.getSaldo();
                                 LeituraArquivo.escritorTransferencia(conta, valor, "poupanca");
                                 menuCliente(pessoa, conta);
-                            }else {
+                            } else {
                                 menuCliente(pessoa, conta);
                             }
                         } else {
@@ -140,11 +140,11 @@ public class MenuOpcao {
                             Double valor = menu.myObj.nextDouble();
                             if (conta.transferir(valor, contaDestino)) {
                                 System.out.printf("\nValor transferido foi de: R$ %.2f%n", valor);
-                                System.out.print("\nSaldo atual de " + conta.getTitular() + " ");
+                                System.out.print("\nConsulte seu saldo.");
                                 conta.getSaldo();
                                 LeituraArquivo.escritorTransferencia(conta, valor, "poupanca");
                                 menuCliente(pessoa, conta);
-                            }else {
+                            } else {
                                 menuCliente(pessoa, conta);
                             }
                         } else {
@@ -237,12 +237,12 @@ public class MenuOpcao {
                                 Double valor = menu.myObj.nextDouble();
                                 if (conta.transferir(valor, contaDestino)) {
                                     System.out.printf("\nValor transferido foi de: R$ %.2f%n", valor);
-                                    System.out.print("\nSaldo atual de " + conta.getTitular() + " ");
+                                    System.out.print("\nConsulte seu saldo.");
                                     conta.getSaldo();
                                     LeituraArquivo.escritorTransferencia(conta, valor, "poupanca");
-                                    menuCliente(pessoa, conta);
-                                }else {
-                                    menuCliente(pessoa, conta);
+                                    menuFuncionarioOp(pessoa, conta, funcionario);
+                                } else {
+                                    menuFuncionarioOp(pessoa, conta, funcionario);
                                 }
                             } else {
                                 System.out.println("conta não existe, ou seleção invalida");
@@ -320,12 +320,12 @@ public class MenuOpcao {
                                 Double valor = menu.myObj.nextDouble();
                                 if (conta.transferir(valor, contaDestino)) {
                                     System.out.printf("\nValor transferido foi de: R$ %.2f%n", valor);
-                                    System.out.print("\nSaldo atual de " + conta.getTitular() + " ");
+                                    System.out.print("\n Consulte seu saldo");
                                     conta.getSaldo();
                                     LeituraArquivo.escritorTransferencia(conta, valor, "poupanca");
-                                    menuCliente(pessoa, conta);
-                                }else {
-                                    menuCliente(pessoa, conta);
+                                    menuFuncionarioOp(pessoa, conta, funcionario);
+                                } else {
+                                    menuFuncionarioOp(pessoa, conta, funcionario);
                                 }
                             } else {
                                 app.limparTela();
