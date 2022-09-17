@@ -67,6 +67,8 @@ public class MenuOpecaoFuncionario {
 
                         break;
                     case 2:
+                        app.limparTela();
+                        System.out.println("Contas cadastradas no banco");
                         List<Cliente> listaCliente = new ArrayList<Cliente>(Cliente.mapaCliente.values());
                         listaCliente.sort(Comparator.comparing(Cliente::getNome));
                         for (int i = 0; i < listaCliente.size(); i++) {
@@ -74,6 +76,7 @@ public class MenuOpecaoFuncionario {
 
                             System.out.println(listaCliente.get(i));
                         }
+                        menuFuncionario(pessoa, conta, funcionario);
                         break;
                     case 3:
                         if (conta == null) {
@@ -100,6 +103,8 @@ public class MenuOpecaoFuncionario {
                         System.out.println(LeituraArquivo.escritorContaAgencia("data", gerente.getIdAgencia()));
                         break;
                     case 2:
+                        app.limparTela();
+                        System.out.println("Contas cadastradas no banco");
                         List<Cliente> listaCliente = new ArrayList<Cliente>(Cliente.mapaCliente.values());
                         listaCliente.sort(Comparator.comparing(Cliente::getNome));
                         for (int i = 0; i < listaCliente.size(); i++) {
@@ -107,8 +112,10 @@ public class MenuOpecaoFuncionario {
 
                             System.out.println(listaCliente.get(i));
                         }
+                        menuFuncionario(pessoa, conta, funcionario);
                         break;
                     case 3:
+                        app.limparTela();
                         double total = 0;
                         for (Conta c : Conta.mapaContas.values()) {
                             total = total + c.getSaldo();
@@ -116,6 +123,7 @@ public class MenuOpecaoFuncionario {
 
                         System.out.printf("Capital total armazenado no banco: R$ %.2f", total);
                         System.out.println();
+                        menuFuncionario(pessoa, conta, funcionario);
                         break;
                     case 4:
                         if (conta == null) {
