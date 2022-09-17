@@ -36,6 +36,8 @@ public class LeituraArquivo {
             Cliente cliente = new Cliente(data[2], data[10], data[12], data[7], data[11], data[8], data[13], data[9],
                 Integer.parseInt(data[3]));
             Cliente.mapaPessoas.put(data[7], cliente);
+            Cliente.mapaCliente.put(data[7], cliente);
+            Cliente.ordenaCliente.put(data[2], cliente);
             if (data[1].equalsIgnoreCase(ContaEnum.POUPANCA.getTipoConta())) {
               ContaPoupanca contaP = new ContaPoupanca(data[1], data[2], data[3], data[4], Double.parseDouble(data[5]),
                   data[6], data[7]);
@@ -275,4 +277,5 @@ public class LeituraArquivo {
     return cont;
 
   }
+
 }
