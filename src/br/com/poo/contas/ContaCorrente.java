@@ -22,9 +22,17 @@ public class ContaCorrente extends Conta implements Tributo {
 		return taxas;
 	}
 
-	public Integer getTotalSaques() {
-		return totalSaques;
-	}
+    public Integer getTotalSaques() {
+        return totalSaques;
+    }
+
+    public Integer getTotalDepositos() {
+        return totalDepositos;
+    }
+
+    public Integer getTotalTransferencia() {
+        return totalTransferencia;
+    }
 
 	@Override
 	public double tributarSaque(double valor) {

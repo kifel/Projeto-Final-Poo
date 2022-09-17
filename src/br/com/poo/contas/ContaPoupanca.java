@@ -5,14 +5,29 @@ import java.util.Scanner;
 public class ContaPoupanca extends Conta {
 
     protected final double TAXARENDIMENTO = 0.9;
+    private Integer totalSaques = 0;
+	private Integer totalDepositos = 0;
+	private Integer totalTransferencia = 0;
 
-    ContaPoupanca() {
+    public ContaPoupanca() {
 
     }
 
     public ContaPoupanca(String tipoConta, String titular, String numeroAgencia, String numeroConta, Double saldo,
             String dataAbertura, String cpf) {
         super(tipoConta, titular, numeroAgencia, numeroConta, saldo, dataAbertura, cpf);
+    }
+
+    public Integer getTotalSaques() {
+        return totalSaques;
+    }
+
+    public Integer getTotalDepositos() {
+        return totalDepositos;
+    }
+
+    public Integer getTotalTransferencia() {
+        return totalTransferencia;
     }
 
     @Override
@@ -28,6 +43,7 @@ public class ContaPoupanca extends Conta {
             System.out.printf("\nValor sacado: R$%.2f", valor, "\n");
             System.out.printf("\nSaldo atual: R$%.2f", this.saldo, "\n");
             this.saldo -= valor;
+            totalSaques++;
             return true;
         }
     }
@@ -41,6 +57,7 @@ public class ContaPoupanca extends Conta {
             System.out.println("\nOperação realizada com sucesso!\n");
             System.out.printf("\nValor depositado: R$%.2f", valor, "\n");
             System.out.printf("\nSaldo atual: R$%.2f", this.saldo, "\n");
+            totalDepositos++;
             return true;
         }
     }
@@ -56,6 +73,7 @@ public class ContaPoupanca extends Conta {
             System.out.println("\nOperação realizada com sucesso!\n");
             System.out.printf("\nValor Transferido de : R$%.2f", valor, "\n");
             System.out.printf("\nSaldo atual: R$%.2f", this.saldo, "\n");
+            totalTransferencia++;
             return true;
         }
     }
