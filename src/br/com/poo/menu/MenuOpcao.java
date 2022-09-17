@@ -62,19 +62,20 @@ public class MenuOpcao {
                         System.out.print("\nInforme o cpf da conta destino: ");
                         String cpfDestino = menu.myObj.next();
                         Conta contaDestino = Conta.mapaContas.get(cpfDestino);
-                        if (contaDestino != null) {
+                        if (contaDestino != null && contaDestino != conta) {
                             System.out.print("Digite o valor que deseja transferir: ");
                             Double valor = menu.myObj.nextDouble();
                             if (conta.transferir(valor, contaDestino)) {
                                 System.out.printf("\nValor transferido foi de: R$ %.2f%n", valor);
                                 System.out.print("\nSaldo atual de " + conta.getTitular() + " ");
                                 conta.getSaldo();
-                                LeituraArquivo.escritorTransferencia(conta, valor, "corrente");
+                                LeituraArquivo.escritorTransferencia(conta, valor, "poupanca");
                                 menuCliente(pessoa, conta);
-
+                            }else {
+                                menuCliente(pessoa, conta);
                             }
                         } else {
-                            System.out.println("conta não existe");
+                            System.out.println("conta não existe, ou seleção invalida");
                             menuCliente(pessoa, conta);
                         }
                         break;
@@ -134,7 +135,7 @@ public class MenuOpcao {
                         System.out.print("\nInforme o cpf da conta destino: ");
                         String cpfDestino = menu.myObj.next();
                         Conta contaDestino = Conta.mapaContas.get(cpfDestino);
-                        if (contaDestino != null) {
+                        if (contaDestino != null && contaDestino != conta) {
                             System.out.print("Digite o valor que deseja transferir: ");
                             Double valor = menu.myObj.nextDouble();
                             if (conta.transferir(valor, contaDestino)) {
@@ -143,9 +144,11 @@ public class MenuOpcao {
                                 conta.getSaldo();
                                 LeituraArquivo.escritorTransferencia(conta, valor, "poupanca");
                                 menuCliente(pessoa, conta);
+                            }else {
+                                menuCliente(pessoa, conta);
                             }
                         } else {
-                            System.out.println("conta não existe");
+                            System.out.println("conta não existe, ou seleção invalida");
                             menuCliente(pessoa, conta);
                         }
                         break;
@@ -229,18 +232,20 @@ public class MenuOpcao {
                             System.out.print("\nInforme o cpf da conta destino: ");
                             String cpfDestino = menu.myObj.next();
                             Conta contaDestino = Conta.mapaContas.get(cpfDestino);
-                            if (contaDestino != null) {
+                            if (contaDestino != null && contaDestino != conta) {
                                 System.out.print("Digite o valor que deseja transferir: ");
                                 Double valor = menu.myObj.nextDouble();
                                 if (conta.transferir(valor, contaDestino)) {
                                     System.out.printf("\nValor transferido foi de: R$ %.2f%n", valor);
-                                    System.out.print("Consulte seu saldo");
+                                    System.out.print("\nSaldo atual de " + conta.getTitular() + " ");
                                     conta.getSaldo();
-                                    LeituraArquivo.escritorTransferencia(conta, valor, "corrente");
-                                    menuFuncionarioOp(pessoa, conta, funcionario);
+                                    LeituraArquivo.escritorTransferencia(conta, valor, "poupanca");
+                                    menuCliente(pessoa, conta);
+                                }else {
+                                    menuCliente(pessoa, conta);
                                 }
                             } else {
-                                System.out.println("conta não existe");
+                                System.out.println("conta não existe, ou seleção invalida");
                                 menuFuncionarioOp(pessoa, conta, funcionario);
                             }
                             break;
@@ -309,22 +314,22 @@ public class MenuOpcao {
                             System.out.print("\nInforme o cpf da conta destino: ");
                             String cpfDestino = menu.myObj.next();
                             Conta contaDestino = Conta.mapaContas.get(cpfDestino);
-                            if (contaDestino != null) {
+                            if (contaDestino != null && contaDestino != conta) {
                                 app.limparTela();
                                 System.out.print("Digite o valor que deseja transferir: ");
                                 Double valor = menu.myObj.nextDouble();
                                 if (conta.transferir(valor, contaDestino)) {
-                                    app.limparTela();
-                                    System.out.println("Operação realizada com sucesso!");
                                     System.out.printf("\nValor transferido foi de: R$ %.2f%n", valor);
-                                    System.out.print("Consulte seu saldo");
+                                    System.out.print("\nSaldo atual de " + conta.getTitular() + " ");
                                     conta.getSaldo();
                                     LeituraArquivo.escritorTransferencia(conta, valor, "poupanca");
-                                    menuFuncionarioOp(pessoa, conta, funcionario);
+                                    menuCliente(pessoa, conta);
+                                }else {
+                                    menuCliente(pessoa, conta);
                                 }
                             } else {
                                 app.limparTela();
-                                System.out.println("conta não existe");
+                                System.out.println("conta não existe, ou seleção invalida");
                                 menuFuncionarioOp(pessoa, conta, funcionario);
                             }
                             break;

@@ -22,17 +22,17 @@ public class ContaCorrente extends Conta implements Tributo {
 		return taxas;
 	}
 
-    public Integer getTotalSaques() {
-        return totalSaques;
-    }
+	public Integer getTotalSaques() {
+		return totalSaques;
+	}
 
-    public Integer getTotalDepositos() {
-        return totalDepositos;
-    }
+	public Integer getTotalDepositos() {
+		return totalDepositos;
+	}
 
-    public Integer getTotalTransferencia() {
-        return totalTransferencia;
-    }
+	public Integer getTotalTransferencia() {
+		return totalTransferencia;
+	}
 
 	@Override
 	public double tributarSaque(double valor) {
@@ -70,6 +70,7 @@ public class ContaCorrente extends Conta implements Tributo {
 	public boolean depositar(double valor) {
 		double valorTributado = tributarDeposito(valor);
 		if (valor < 0) {
+			System.out.println("Saldo insuficiente!!!");
 			return false;
 		} else {
 			this.saldo += valorTributado;
@@ -83,20 +84,25 @@ public class ContaCorrente extends Conta implements Tributo {
 
 	@Override
 	public boolean transferir(double valor, Conta nomeConta) {
+
 		double valorTributado = tributarTransferencia(valor);
-		if (this.saldo >= valorTributado) {
-			nomeConta.saldo = nomeConta.saldo + valor;
-			this.saldo -= valorTributado;
-			this.taxas += Tributo.TRANSFERENCIA;
-			System.out.println(taxas);
-			System.out.println("\nOperação realizada com sucesso!\n");
-			totalTransferencia++;
-			return true;
+		if (valor > 0) {
+			if (this.saldo >= valorTributado) {
+				nomeConta.saldo = nomeConta.saldo + valor;
+				this.saldo -= valorTributado;
+				this.taxas += Tributo.TRANSFERENCIA;
+				System.out.println(taxas);
+				System.out.println("\nOperação realizada com sucesso!\n");
+				totalTransferencia++;
+				return true;
+			} else {
+				System.out.println("Não há saldo suficiente para transferir esse valor!!!");
+				return false;
 
-		} else {
-			System.out.println("Não há saldo suficiente para transferir esse valor!!!");
+			}
+		}else {
+			System.out.println("Valor Invalido !!!!");
 			return false;
-
 		}
 	}
 
