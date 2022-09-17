@@ -1,9 +1,13 @@
 package br.com.poo.menu;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Comparator;
 
 import br.com.poo.contas.Conta;
 import br.com.poo.io.LeituraArquivo;
+import br.com.poo.pessoas.Cliente;
 import br.com.poo.pessoas.Funcionario;
 import br.com.poo.pessoas.Gerente;
 import br.com.poo.pessoas.Pessoa;
@@ -60,9 +64,16 @@ public class MenuOpecaoFuncionario {
                 opcaoOperacao = menu.myObj.nextInt();
                 switch (opcaoOperacao) {
                     case 1:
-                        System.out.println(LeituraArquivo.escritorContaAgencia("data", gerente.getIdAgencia()));
+
                         break;
                     case 2:
+                        List<Cliente> listaCliente = new ArrayList<Cliente>(Cliente.mapaCliente.values());
+                        listaCliente.sort(Comparator.comparing(Cliente::getNome));
+                        for (int i = 0; i < listaCliente.size(); i++) {
+                            listaCliente.get(i);
+
+                            System.out.println(listaCliente.get(i));
+                        }
                         break;
                     case 3:
                         if (conta == null) {
@@ -89,8 +100,22 @@ public class MenuOpecaoFuncionario {
                         System.out.println(LeituraArquivo.escritorContaAgencia("data", gerente.getIdAgencia()));
                         break;
                     case 2:
+                        List<Cliente> listaCliente = new ArrayList<Cliente>(Cliente.mapaCliente.values());
+                        listaCliente.sort(Comparator.comparing(Cliente::getNome));
+                        for (int i = 0; i < listaCliente.size(); i++) {
+                            listaCliente.get(i);
+
+                            System.out.println(listaCliente.get(i));
+                        }
                         break;
                     case 3:
+                        double total = 0;
+                        for (Conta c : Conta.mapaContas.values()) {
+                            total = total + c.getSaldo();
+                        }
+
+                        System.out.printf("Capital total armazenado no banco: R$ %.2f", total);
+                        System.out.println();
                         break;
                     case 4:
                         if (conta == null) {
