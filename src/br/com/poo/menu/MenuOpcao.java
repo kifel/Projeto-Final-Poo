@@ -83,7 +83,7 @@ public class MenuOpcao {
                         // LeituraArquivo.comprovanteSaldo(conta);
                         break;
                     case 5:
-                        menu.menuInicio();
+                        menu.logoInicio();
                         break;
                     default:
                         menuCliente(pessoa, conta);
@@ -154,7 +154,7 @@ public class MenuOpcao {
                         menuCliente(pessoa, conta);
                         break;
                     case 6:
-                        menu.menuInicio();
+                        menu.logoInicio();
                         break;
                     default:
                         menuCliente(pessoa, conta);
@@ -242,7 +242,7 @@ public class MenuOpcao {
                             menuF.menuFuncionario(pessoa, conta, funcionario);
                             break;
                         case 6:
-                            menu.menuInicio();
+                            menu.logoInicio();
                             break;
                         default:
                             menuFuncionarioOp(pessoa, conta, funcionario);
@@ -316,7 +316,7 @@ public class MenuOpcao {
                             menuF.menuFuncionario(pessoa, conta, funcionario);
                             break;
                         case 7:
-                            menu.menuInicio();
+                            menu.logoInicio();
                             break;
                         default:
                             menuFuncionarioOp(pessoa, conta, funcionario);

@@ -14,35 +14,42 @@ public class MenuLogin {
     String choice;
     Scanner myObj = new Scanner(System.in);
 
-    public void logoInicio () {
-        app.logoBanco();
-        System.out.println("\n");
-        menuInicio();
+    public void logoInicio() {
+        try {
+            app.logoBanco();
+            System.out.println("\n");
+            menuInicio();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void menuInicio() {
 
-        app.linhaMenu();
-        System.out.println("\n*              [1] - Logar                  *");
-        System.out.println("*              [2] - Sair                   *");
-        app.linhaMenu();
-        System.out.print("\n\n=> ");
-        choice = myObj.nextLine();
+        try {
+            app.linhaMenu();
+            System.out.println("\n*              [1] - Logar                  *");
+            System.out.println("*              [2] - Sair                   *");
+            app.linhaMenu();
+            System.out.print("\n\n=> ");
+            choice = myObj.nextLine();
 
-        switch (choice) {
-            case "1":
-                menuLogar();
-                break;
-            case "2":
-                app.limparTela();
-                System.out.println("\n");
-                app.logoBanco();
-                System.out.println("Saindo do Tree Bank, tenha um bom dia");
-                break;
-            default:
-                app.limparTela();
-                System.out.println("Opção invalida, tente novamente");
-                menuInicio();
+            switch (choice) {
+                case "1":
+                    menuLogar();
+                    break;
+                case "2":
+                    app.limparTela();
+                    app.logoBanco();
+                    System.out.println("\n");
+                    System.out.println("Saindo do Tree Bank, tenha um bom dia");
+                    break;
+                default:
+                    app.limparTela();
+                    menuInicio();
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 
