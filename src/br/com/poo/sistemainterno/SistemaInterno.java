@@ -11,6 +11,6 @@ public class SistemaInterno {
         LeituraArquivo.leitor("data");
 
         MenuLogin menu = new MenuLogin();
-        menu.menuInicio();
+        menu.logoInicio();
     }
 }

@@ -86,7 +86,6 @@ public class MenuOpcao {
                         menu.menuInicio();
                         break;
                     default:
-                        System.out.println("\nOpção inválida!");
                         menuCliente(pessoa, conta);
                 }
             } else if (conta.getTipoConta().equals("POUPANCA")) {
@@ -158,7 +157,7 @@ public class MenuOpcao {
                         menu.menuInicio();
                         break;
                     default:
-                        System.out.println("\nOpção inválida!");
+                        menuCliente(pessoa, conta);
                 }
             } else {
                 System.out.println("Erro 404");
@@ -173,9 +172,9 @@ public class MenuOpcao {
     public void menuFuncionarioOp(Pessoa pessoa, Conta conta, Funcionario funcionario) throws IOException {
 
         int opcaoOperacao;
-        MenuOpecaoFuncionario menuF = new MenuOpecaoFuncionario();
 
         try {
+            MenuOpecaoFuncionario menuF = new MenuOpecaoFuncionario();
             if (conta != null) {
                 if (conta.getTipoConta().equals("CORRENTE")) {
                     System.out.println();
@@ -246,7 +245,6 @@ public class MenuOpcao {
                             menu.menuInicio();
                             break;
                         default:
-                            System.out.println("\nOpção inválida!");
                             menuFuncionarioOp(pessoa, conta, funcionario);
                     }
                 } else if (conta.getTipoConta().equals("POUPANCA")) {
@@ -308,7 +306,6 @@ public class MenuOpcao {
                         case 4:
                             System.out.printf("\nSeu saldo é: R$%.2f", conta.getSaldo());
                             menuFuncionarioOp(pessoa, conta, funcionario);
-                            // LeituraArquivo.comprovanteSaldo(conta);
                             break;
                         case 5:
                             ContaPoupanca contaP = (ContaPoupanca) Conta.mapaContas.get(pessoa.getCpf());
@@ -323,7 +320,6 @@ public class MenuOpcao {
                             break;
                         default:
                             menuFuncionarioOp(pessoa, conta, funcionario);
-                            System.out.println("\nOpção inválida!");
                     }
                 } else {
                     System.out.println("Erro 404");
