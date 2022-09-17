@@ -8,6 +8,7 @@ public class ContaPoupanca extends Conta {
     private Integer totalSaques = 0;
 	private Integer totalDepositos = 0;
 	private Integer totalTransferencia = 0;
+    Scanner myObj = new Scanner(System.in);
 
     public ContaPoupanca() {
 
@@ -50,7 +51,7 @@ public class ContaPoupanca extends Conta {
 
     @Override
     public boolean depositar(double valor) {
-        if (valor < 0) {
+        if (valor <= 0) {
             return false;
         } else {
             this.saldo += valor;
@@ -80,7 +81,6 @@ public class ContaPoupanca extends Conta {
 
     public void rendimentoPoupanca() {
         double rendimentoPoupanca;
-        Scanner myObj = new Scanner(System.in);
         System.out.println("Informe o número de dias: ");
         int dias = myObj.nextInt();
         System.out.println("Digite o valor: ");
@@ -95,7 +95,6 @@ public class ContaPoupanca extends Conta {
         System.out.println();
 
 
-        myObj.close();
     }
 
     @Override

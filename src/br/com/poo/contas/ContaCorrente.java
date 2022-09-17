@@ -52,7 +52,7 @@ public class ContaCorrente extends Conta implements Tributo {
 	@Override
 	public boolean sacar(double valor) {
 		double valorTributado = tributarSaque(valor);
-		if (valor < 0) {
+		if (valor <= 0) {
 			System.out.println("O valor digitado para saque é inválido!");
 			return false;
 		} else if (this.saldo - valorTributado >= 0) {
@@ -69,8 +69,8 @@ public class ContaCorrente extends Conta implements Tributo {
 	@Override
 	public boolean depositar(double valor) {
 		double valorTributado = tributarDeposito(valor);
-		if (valor < 0) {
-			System.out.println("Saldo insuficiente!!!");
+		if (valor <= 0) {
+			System.out.println("Erro ao depositar, valor invalido!!!");
 			return false;
 		} else {
 			this.saldo += valorTributado;
