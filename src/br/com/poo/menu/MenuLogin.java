@@ -16,8 +16,6 @@ public class MenuLogin {
 
     public void logoInicio() {
         try {
-            app.logoBanco();
-            System.out.println("\n");
             menuInicio();
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -27,6 +25,8 @@ public class MenuLogin {
     public void menuInicio() {
 
         try {
+            app.logoBanco();
+            System.out.println("\n");
             app.linhaMenu();
             System.out.println("\n*              [1] - Logar                  *");
             System.out.println("*              [2] - Sair                   *");

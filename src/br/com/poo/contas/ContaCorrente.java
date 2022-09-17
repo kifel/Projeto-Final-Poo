@@ -31,12 +31,12 @@ public class ContaCorrente extends Conta implements Tributo {
 
 	@Override
 	public double tributarDeposito(double valor) {
-		return 0;
+		return 0.1;
 	}
 
 	@Override
 	public double tributarTransferencia(double valor) {
-		return 0;
+		return 0.2;
 	}
 
 	@Override
