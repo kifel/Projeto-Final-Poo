@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ContaPoupanca extends Conta {
 
-    protected final double TAXARENDIMENTO = 0.01575;
+    protected final double TAXARENDIMENTO = 0.9;
 
     ContaPoupanca() {
 
@@ -76,6 +76,8 @@ public class ContaPoupanca extends Conta {
         System.out.printf("\n R$ %.2f", (valor + rendimentoPoupanca));
         System.out.println();
 
+
+        myObj.close();
     }
 
     @Override

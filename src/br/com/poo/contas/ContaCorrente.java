@@ -6,6 +6,8 @@ public class ContaCorrente extends Conta implements Tributo {
 
 	private double taxas;
 	private Integer totalSaques = 0;
+	private Integer totalDepositos = 0;
+	private Integer totalTransferencia = 0;
 
 	public ContaCorrente() {
 		super();
@@ -31,12 +33,12 @@ public class ContaCorrente extends Conta implements Tributo {
 
 	@Override
 	public double tributarDeposito(double valor) {
-		return 0.1;
+		return valor - Tributo.DEPOSITO;
 	}
 
 	@Override
 	public double tributarTransferencia(double valor) {
-		return 0.2;
+		return valor + Tributo.TRANSFERENCIA;
 	}
 
 	@Override
@@ -48,7 +50,7 @@ public class ContaCorrente extends Conta implements Tributo {
 		} else if (this.saldo - valorTributado >= 0) {
 			this.saldo -= valorTributado;
 			this.taxas += Tributo.SAQUE;
-			++totalSaques;
+			totalSaques++;
 			return true;
 		} else {
 			System.out.println("Saldo insuficiente!!!");
@@ -62,10 +64,11 @@ public class ContaCorrente extends Conta implements Tributo {
 		if (valor < 0) {
 			return false;
 		} else {
-			this.saldo += (valor - valorTributado);
-			this.taxas += valorTributado;
+			this.saldo += valorTributado;
+			this.taxas += Tributo.DEPOSITO;
 			System.out.println("\nOperação realizada com sucesso!\n");
 			System.out.printf("\nValor depositado: R$%.2f", valor, "\n");
+			totalDepositos++;
 			return true;
 		}
 	}
@@ -75,9 +78,12 @@ public class ContaCorrente extends Conta implements Tributo {
 		double valorTributado = tributarTransferencia(valor);
 		if (this.saldo >= valorTributado) {
 			nomeConta.saldo = nomeConta.saldo + valor;
-			sacar(valor + valorTributado);
-			this.taxas += valorTributado;
+			System.out.println(valorTributado);
+			this.saldo -= valorTributado;
+			this.taxas += Tributo.TRANSFERENCIA;
+			System.out.println(taxas);
 			System.out.println("\nOperação realizada com sucesso!\n");
+			totalTransferencia++;
 			return true;
 
 		} else {
